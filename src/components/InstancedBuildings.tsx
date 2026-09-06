@@ -39,11 +39,14 @@ export function InstancedBuildings({ districts }: InstancedBuildingsProps) {
         // Base dimensions
         const baseHeight = building.height * 5 + 0.5; // Scale up the normalized value
         
-        // Assign colors based on material
-        let hexColor = '#888888';
-        if (building.material === 'typescript') hexColor = '#3178c6';
-        if (building.material === 'rust') hexColor = '#dea584';
-        if (building.material === 'python') hexColor = '#3572A5';
+        // Assign colors based on material (Stitch Telemetry Signatures)
+        let hexColor = '#4B5563'; // Ghost grey fallback
+        if (building.material === 'javascript') hexColor = '#F59E0B';
+        if (building.material === 'typescript') hexColor = '#06B6D4';
+        if (building.material === 'python') hexColor = '#EC4899';
+        if (building.material === 'go') hexColor = '#06B6D4';
+        if (building.material === 'rust') hexColor = '#DEA584';
+        if (building.material === 'ruby') hexColor = '#8B5CF6';
         
         data.push({
           targetScaleY: baseHeight,
