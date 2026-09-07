@@ -2,12 +2,16 @@
 
 import { useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { CameraControls, Sky, Environment, ContactShadows, Fog } from '@react-three/drei';
+import { CameraControls, ContactShadows, Fog } from '@react-three/drei';
 import { InstancedBuildings } from './InstancedBuildings';
-import { mockCityData } from '@/data/mockCitySchema';
+import { CitySchema } from '@/data/mockCitySchema';
 import * as THREE from 'three';
 
-export function CityScene() {
+interface CitySceneProps {
+  cityData: CitySchema;
+}
+
+export function CityScene({ cityData }: CitySceneProps) {
   const cameraControlRef = useRef<CameraControls>(null);
 
   useEffect(() => {
@@ -52,7 +56,7 @@ export function CityScene() {
         />
 
         {/* The procedurally generated city */}
-        <InstancedBuildings districts={mockCityData.districts} />
+        <InstancedBuildings districts={cityData.districts} />
 
         {/* Ground plane */}
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
