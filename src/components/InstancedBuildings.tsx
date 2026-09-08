@@ -8,9 +8,10 @@ import { Building, District } from '@/data/mockCitySchema';
 
 interface InstancedBuildingsProps {
   districts: District[];
+  onBuildingClick?: (building: Building) => void;
 }
 
-export function InstancedBuildings({ districts }: InstancedBuildingsProps) {
+export function InstancedBuildings({ districts, onBuildingClick }: InstancedBuildingsProps) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   
   // Flatten all buildings to know the total count for the InstancedMesh

@@ -4,14 +4,15 @@ import { useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { CameraControls, ContactShadows, Fog } from '@react-three/drei';
 import { InstancedBuildings } from './InstancedBuildings';
-import { CitySchema } from '@/data/mockCitySchema';
+import { CitySchema, Building } from '@/data/mockCitySchema';
 import * as THREE from 'three';
 
 interface CitySceneProps {
   cityData: CitySchema;
+  onBuildingClick?: (building: Building) => void;
 }
 
-export function CityScene({ cityData }: CitySceneProps) {
+export function CityScene({ cityData, onBuildingClick }: CitySceneProps) {
   const cameraControlRef = useRef<CameraControls>(null);
 
   useEffect(() => {
@@ -56,7 +57,7 @@ export function CityScene({ cityData }: CitySceneProps) {
         />
 
         {/* The procedurally generated city */}
-        <InstancedBuildings districts={cityData.districts} />
+        <InstancedBuildings districts={cityData.districts} onBuildingClick={onBuildingClick} />
 
         {/* Ground plane */}
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>

@@ -1,9 +1,11 @@
 'use client';
 
+import { useState } from 'react';
 import { CityScene } from '@/components/CityScene';
+import { RepoInspector } from '@/components/RepoInspector';
 import { motion } from 'motion/react';
 import { signIn } from 'next-auth/react';
-import { CitySchema } from '@/data/mockCitySchema';
+import { CitySchema, Building } from '@/data/mockCitySchema';
 
 interface ClientPageProps {
   initialData: CitySchema;
@@ -11,10 +13,15 @@ interface ClientPageProps {
 }
 
 export default function ClientPage({ initialData, isAuthenticated }: ClientPageProps) {
+  const [selectedRepo, setSelectedRepo] = useState<Building | null>(null);
+
   return (
     <main className="relative w-full h-screen overflow-hidden bg-[var(--color-canvas-base)] text-[var(--color-text-high)]">
       {/* 3D Scene Layer */}
-      <CityScene cityData={initialData} />
+      <CityScene cityData={initialData} onBuildingClick={setSelectedRepo} />
+
+      {/* Repo Inspector Overlay (slides in when selectedRepo is set) */}
+      <RepoInspector repo={selectedRepo} onClose={() => setSelectedRepo(null)} />
 
       {/* 2D UI Overlay Layer (HUD) */}
       <motion.div 
