@@ -10,6 +10,7 @@ export interface Building {
   openPRs: number;
   lastCommitDaysAgo: number;
   url: string; // Direct link to the repository
+  stars: number;
 }
 
 export interface District {
@@ -27,6 +28,7 @@ export interface UserProfile {
   login: string;
   followers: number;
   accountAgeYears: number;
+  avatarUrl?: string;
 }
 
 export interface CitySchema {
@@ -49,6 +51,7 @@ const generateMockBuildings = (count: number, baseMaterial: string): Building[] 
     openPRs: Math.floor(Math.random() * 5),
     lastCommitDaysAgo: Math.floor(Math.random() * 100),
     url: `https://github.com/example/${baseMaterial}-project-${i + 1}`,
+    stars: Math.floor(Math.random() * 1000),
   }));
 };
 

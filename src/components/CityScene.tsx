@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { CameraControls, ContactShadows, Fog } from '@react-three/drei';
+import { CameraControls, ContactShadows } from '@react-three/drei';
 import { InstancedBuildings } from './InstancedBuildings';
 import { CitySchema, Building } from '@/data/mockCitySchema';
 import * as THREE from 'three';
@@ -85,7 +85,6 @@ export function CityScene({ cityData, selectedRepo, onBuildingClick }: CityScene
         
         <CameraControls 
           ref={cameraControlRef} 
-          damped={true} // Inertial damping for that smooth Apple-like feel
           maxPolarAngle={Math.PI / 2 - 0.05} // Prevent going below ground
           minDistance={5}
           maxDistance={100}

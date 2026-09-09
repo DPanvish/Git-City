@@ -8,16 +8,16 @@ export default function LoadingScreen() {
   const [currentRepo, setCurrentRepo] = useState('user/frontend-core [842 commits, 18 branches]');
   const totalRepos = 64;
 
-  const simulatedRepos = [
-    'user/frontend-core [842 commits, 18 branches]',
-    'user/api-gateway [1,429 commits, 32 branches]',
-    'user/neural-pipeline [512 commits, 8 branches]',
-    'user/infrastructure-iac [390 commits, 12 branches]',
-    'user/auth-service [615 commits, 9 branches]',
-    'user/analytics-engine [1,840 commits, 45 branches]'
-  ];
-
   useEffect(() => {
+    const simulatedRepos = [
+      'user/frontend-core [842 commits, 18 branches]',
+      'user/api-gateway [1,429 commits, 32 branches]',
+      'user/neural-pipeline [512 commits, 8 branches]',
+      'user/infrastructure-iac [390 commits, 12 branches]',
+      'user/auth-service [615 commits, 9 branches]',
+      'user/analytics-engine [1,840 commits, 45 branches]'
+    ];
+    
     let repoIndex = 0;
     const timer = setInterval(() => {
       setProgress((prev) => {

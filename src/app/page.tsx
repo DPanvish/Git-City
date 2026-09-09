@@ -24,5 +24,5 @@ export default async function Home() {
     return <LandingPage />;
   }
 
-  return <ClientPage initialData={cityData} isAuthenticated={isAuthenticated} />;
+  return <ClientPage initialData={cityData} />;
 }
