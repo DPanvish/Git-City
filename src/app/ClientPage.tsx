@@ -18,7 +18,7 @@ export default function ClientPage({ initialData, isAuthenticated }: ClientPageP
   return (
     <main className="relative w-full h-screen overflow-hidden bg-[var(--color-canvas-base)] text-[var(--color-text-high)]">
       {/* 3D Scene Layer */}
-      <CityScene cityData={initialData} onBuildingClick={setSelectedRepo} />
+      <CityScene cityData={initialData} selectedRepo={selectedRepo} onBuildingClick={setSelectedRepo} />
 
       {/* Repo Inspector Overlay (slides in when selectedRepo is set) */}
       <RepoInspector repo={selectedRepo} onClose={() => setSelectedRepo(null)} />

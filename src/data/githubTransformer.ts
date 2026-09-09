@@ -14,6 +14,7 @@ const CITY_QUERY = `
         nodes {
           id
           name
+          url
           stargazerCount
           diskUsage
           pushedAt
@@ -38,12 +39,15 @@ export async function fetchLiveCityData(accessToken: string): Promise<CitySchema
     headers: {
       'Authorization': `bearer ${accessToken}`,
       'Content-Type': 'application/json',
+      'User-Agent': 'Git-City-App', // GitHub requires a User-Agent header
     },
     body: JSON.stringify({ query: CITY_QUERY }),
   });
 
   if (!response.ok) {
-    throw new Error(`GitHub API returned ${response.status}`);
+    const errorText = await response.text();
+    console.error("GitHub API Error Details:", errorText);
+    throw new Error(`GitHub API returned ${response.status}: ${errorText}`);
   }
 
   const { data } = await response.json();
@@ -84,6 +88,7 @@ export async function fetchLiveCityData(accessToken: string): Promise<CitySchema
       contributors: 1, // Fallback as fetching contributors requires complex queries
       openPRs: repo.pullRequests.totalCount + repo.issues.totalCount,
       lastCommitDaysAgo,
+      url: repo.url,
     };
 
     if (!districtsMap.has(lang)) {
