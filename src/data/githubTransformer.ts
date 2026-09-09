@@ -39,12 +39,15 @@ export async function fetchLiveCityData(accessToken: string): Promise<CitySchema
     headers: {
       'Authorization': `bearer ${accessToken}`,
       'Content-Type': 'application/json',
+      'User-Agent': 'Git-City-App', // GitHub requires a User-Agent header
     },
     body: JSON.stringify({ query: CITY_QUERY }),
   });
 
   if (!response.ok) {
-    throw new Error(`GitHub API returned ${response.status}`);
+    const errorText = await response.text();
+    console.error("GitHub API Error Details:", errorText);
+    throw new Error(`GitHub API returned ${response.status}: ${errorText}`);
   }
 
   const { data } = await response.json();
