@@ -3,6 +3,7 @@ import { authOptions } from "./api/auth/[...nextauth]/route";
 import { fetchLiveCityData } from "@/data/githubTransformer";
 import { mockCityData } from "@/data/mockCitySchema";
 import ClientPage from "./ClientPage";
+import LandingPage from "@/components/LandingPage";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
@@ -17,6 +18,10 @@ export default async function Home() {
       console.error("Failed to fetch live city data:", error);
       // Fallback to mock data if API fails
     }
+  }
+
+  if (!isAuthenticated) {
+    return <LandingPage />;
   }
 
   return <ClientPage initialData={cityData} isAuthenticated={isAuthenticated} />;
