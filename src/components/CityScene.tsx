@@ -9,10 +9,11 @@ import * as THREE from 'three';
 
 interface CitySceneProps {
   cityData: CitySchema;
+  selectedRepo: Building | null;
   onBuildingClick?: (building: Building) => void;
 }
 
-export function CityScene({ cityData, onBuildingClick }: CitySceneProps) {
+export function CityScene({ cityData, selectedRepo, onBuildingClick }: CitySceneProps) {
   const cameraControlRef = useRef<CameraControls>(null);
 
   useEffect(() => {
@@ -31,6 +32,17 @@ export function CityScene({ cityData, onBuildingClick }: CitySceneProps) {
       }, 500); // Small delay to let the Canvas render first
     }
   }, []);
+
+  // Watch for deselection to reset camera
+  useEffect(() => {
+    if (selectedRepo === null && cameraControlRef.current) {
+      cameraControlRef.current.setLookAt(
+        20, 15, 30, // Position
+        10, 0, 10,   // Target
+        true         // Animate
+      );
+    }
+  }, [selectedRepo]);
 
   const handleBuildingClick = (building: Building, position: THREE.Vector3) => {
     if (cameraControlRef.current) {

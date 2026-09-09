@@ -67,7 +67,7 @@ export function RepoInspector({ repo, onClose }: RepoInspectorProps) {
             
             <button 
               className="w-full mt-2 h-12 rounded bg-[rgba(6,182,212,0.06)] text-[var(--color-secondary)] font-mono font-semibold text-[13px] border border-[rgba(6,182,212,0.25)] hover:bg-[rgba(6,182,212,0.14)] hover:border-[rgba(6,182,212,0.5)] hover:shadow-[0_0_16px_rgba(6,182,212,0.35)] active:scale-[0.97] transition-all duration-150 ease-out"
-              onClick={() => console.log("Action triggered for:", repo.repoName)}
+              onClick={() => window.open(repo.url, '_blank')}
             >
               ACCESS_SOURCE()
             </button>

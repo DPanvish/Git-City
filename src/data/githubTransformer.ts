@@ -14,6 +14,7 @@ const CITY_QUERY = `
         nodes {
           id
           name
+          url
           stargazerCount
           diskUsage
           pushedAt
@@ -84,6 +85,7 @@ export async function fetchLiveCityData(accessToken: string): Promise<CitySchema
       contributors: 1, // Fallback as fetching contributors requires complex queries
       openPRs: repo.pullRequests.totalCount + repo.issues.totalCount,
       lastCommitDaysAgo,
+      url: repo.url,
     };
 
     if (!districtsMap.has(lang)) {
