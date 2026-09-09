@@ -1,18 +1,19 @@
 'use client';
 
-import { useRef, useMemo, useEffect } from 'react';
+import { useRef, useMemo, useEffect, useState } from 'react';
 import * as THREE from 'three';
-import { useFrame } from '@react-three/fiber';
+import { ThreeEvent } from '@react-three/fiber';
 import { gsap } from 'gsap';
 import { Building, District } from '@/data/mockCitySchema';
 
 interface InstancedBuildingsProps {
   districts: District[];
-  onBuildingClick?: (building: Building) => void;
+  onBuildingClick?: (building: Building, position: THREE.Vector3) => void;
 }
 
 export function InstancedBuildings({ districts, onBuildingClick }: InstancedBuildingsProps) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
+  const [hoveredInstance, setHoveredInstance] = useState<number | null>(null);
   
   // Flatten all buildings to know the total count for the InstancedMesh
   const allBuildings = useMemo(() => {
@@ -29,7 +30,6 @@ export function InstancedBuildings({ districts, onBuildingClick }: InstancedBuil
     let districtOffsetX = 0;
     
     districts.forEach((district) => {
-      // Simple grid layout per district for the prototype
       const gridSize = Math.ceil(Math.sqrt(district.buildings.length));
       const spacing = 1.5;
       
@@ -37,11 +37,9 @@ export function InstancedBuildings({ districts, onBuildingClick }: InstancedBuil
         const row = Math.floor(i / gridSize);
         const col = i % gridSize;
         
-        // Base dimensions
-        const baseHeight = building.height * 5 + 0.5; // Scale up the normalized value
+        const baseHeight = building.height * 5 + 0.5; 
         
-        // Assign colors based on material (Stitch Telemetry Signatures)
-        let hexColor = '#4B5563'; // Ghost grey fallback
+        let hexColor = '#4B5563'; 
         if (building.material === 'javascript') hexColor = '#F59E0B';
         if (building.material === 'typescript') hexColor = '#06B6D4';
         if (building.material === 'python') hexColor = '#EC4899';
@@ -51,34 +49,30 @@ export function InstancedBuildings({ districts, onBuildingClick }: InstancedBuil
         
         data.push({
           targetScaleY: baseHeight,
-          targetX: districtOffsetX + (col * spacing) + (Math.random() * 0.4 - 0.2), // slight random jitter
+          targetX: districtOffsetX + (col * spacing) + (Math.random() * 0.4 - 0.2),
           targetZ: (row * spacing) + (Math.random() * 0.4 - 0.2),
           color: new THREE.Color(hexColor),
         });
       });
       
-      // Offset next district
       districtOffsetX += gridSize * spacing + 5;
     });
     
     return data;
   }, [districts]);
 
-  // We need an array of state objects for GSAP to animate
   const animStates = useMemo(() => {
-    return buildingData.map(() => ({ scaleY: 0 })); // Start completely flat
+    return buildingData.map(() => ({ scaleY: 0 })); 
   }, [buildingData]);
 
   useEffect(() => {
     if (!meshRef.current) return;
     
-    // Set initial colors
     buildingData.forEach((data, i) => {
       meshRef.current!.setColorAt(i, data.color);
     });
     meshRef.current.instanceColor!.needsUpdate = true;
 
-    // Animate the buildings growing from the ground using GSAP
     gsap.to(animStates, {
       scaleY: (i) => buildingData[i].targetScaleY,
       duration: 1.5,
@@ -92,12 +86,9 @@ export function InstancedBuildings({ districts, onBuildingClick }: InstancedBuil
         
         animStates.forEach((state, i) => {
           const target = buildingData[i];
-          
-          dummy.position.set(target.targetX, state.scaleY / 2, target.targetZ); // Center is half height
-          // Fixed width/depth for the prototype
+          dummy.position.set(target.targetX, state.scaleY / 2, target.targetZ); 
           dummy.scale.set(0.8, Math.max(0.01, state.scaleY), 0.8);
           dummy.updateMatrix();
-          
           meshRef.current!.setMatrixAt(i, dummy.matrix);
         });
         
@@ -106,13 +97,67 @@ export function InstancedBuildings({ districts, onBuildingClick }: InstancedBuil
     });
   }, [animStates, buildingData, dummy]);
 
+  const handlePointerOver = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    if (e.instanceId !== undefined) {
+      setHoveredInstance(e.instanceId);
+      document.body.style.cursor = 'pointer';
+    }
+  };
+
+  const handlePointerOut = (e: ThreeEvent<PointerEvent>) => {
+    e.stopPropagation();
+    setHoveredInstance(null);
+    document.body.style.cursor = 'auto';
+  };
+
+  const handleClick = (e: ThreeEvent<MouseEvent>) => {
+    e.stopPropagation();
+    if (e.instanceId !== undefined && onBuildingClick) {
+      const data = buildingData[e.instanceId];
+      // Pass the top-center position of the building for camera focus
+      const position = new THREE.Vector3(data.targetX, data.targetScaleY, data.targetZ);
+      onBuildingClick(allBuildings[e.instanceId], position);
+    }
+  };
+
   return (
-    <instancedMesh ref={meshRef} args={[undefined, undefined, allBuildings.length]} castShadow receiveShadow>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial 
-        roughness={0.2} 
-        metalness={0.1} 
-      />
-    </instancedMesh>
+    <>
+      <instancedMesh 
+        ref={meshRef} 
+        args={[undefined, undefined, allBuildings.length]} 
+        castShadow 
+        receiveShadow
+        onPointerOver={handlePointerOver}
+        onPointerOut={handlePointerOut}
+        onClick={handleClick}
+      >
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial 
+          roughness={0.2} 
+          metalness={0.1} 
+        />
+      </instancedMesh>
+
+      {/* Hover Highlight Overlay */}
+      {hoveredInstance !== null && (
+        <mesh
+          position={[
+            buildingData[hoveredInstance].targetX,
+            animStates[hoveredInstance].scaleY / 2,
+            buildingData[hoveredInstance].targetZ
+          ]}
+          scale={[0.9, animStates[hoveredInstance].scaleY + 0.1, 0.9]}
+        >
+          <boxGeometry args={[1, 1, 1]} />
+          <meshBasicMaterial 
+            color={buildingData[hoveredInstance].color} 
+            transparent 
+            opacity={0.4} 
+            depthTest={false}
+          />
+        </mesh>
+      )}
+    </>
   );
 }

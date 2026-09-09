@@ -32,6 +32,29 @@ export function CityScene({ cityData, onBuildingClick }: CitySceneProps) {
     }
   }, []);
 
+  const handleBuildingClick = (building: Building, position: THREE.Vector3) => {
+    if (cameraControlRef.current) {
+      // Calculate a cinematic "street level" camera position 
+      // offset slightly back and up from the target building
+      const offsetPos = new THREE.Vector3(
+        position.x + 8,
+        position.y + 6,
+        position.z + 8
+      );
+      
+      cameraControlRef.current.setLookAt(
+        offsetPos.x, offsetPos.y, offsetPos.z, // Camera Position
+        position.x, position.y / 2, position.z, // Look At Target (center of building)
+        true // Animate
+      );
+    }
+    
+    // Bubble up to client page to show Inspector
+    if (onBuildingClick) {
+      onBuildingClick(building);
+    }
+  };
+
   return (
     <div className="w-full h-full absolute inset-0">
       <Canvas shadows camera={{ position: [0, 50, 50], fov: 45 }}>
@@ -57,7 +80,7 @@ export function CityScene({ cityData, onBuildingClick }: CitySceneProps) {
         />
 
         {/* The procedurally generated city */}
-        <InstancedBuildings districts={cityData.districts} onBuildingClick={onBuildingClick} />
+        <InstancedBuildings districts={cityData.districts} onBuildingClick={handleBuildingClick} />
 
         {/* Ground plane */}
         <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
