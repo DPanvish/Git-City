@@ -6,6 +6,7 @@ import { RepoInspector } from '@/components/RepoInspector';
 import { HUDOverlay } from '@/components/HUDOverlay';
 import { CitizensModal } from '@/components/CitizensModal';
 import { GuidedTourOverlay } from '@/components/GuidedTourOverlay';
+import { ExportShareModal } from '@/components/ExportShareModal';
 import { CitySchema, Building } from '@/data/mockCitySchema';
 
 interface ClientPageProps {
@@ -16,6 +17,7 @@ export default function ClientPage({ initialData }: ClientPageProps) {
   const [selectedRepo, setSelectedRepo] = useState<Building | null>(null);
   const [isCitizensModalOpen, setIsCitizensModalOpen] = useState(false);
   const [isTourOpen, setIsTourOpen] = useState(false);
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   return (
     <main className="relative w-full h-screen overflow-hidden bg-[var(--color-canvas-base)] text-[var(--color-text-high)]">
@@ -31,6 +33,7 @@ export default function ClientPage({ initialData }: ClientPageProps) {
         onResetCamera={() => setSelectedRepo(null)} 
         onOpenCitizens={() => setIsCitizensModalOpen(true)}
         onStartTour={() => setIsTourOpen(true)}
+        onOpenExport={() => setIsExportModalOpen(true)}
       />
 
       {/* Modals */}
@@ -42,6 +45,11 @@ export default function ClientPage({ initialData }: ClientPageProps) {
       <GuidedTourOverlay
         isOpen={isTourOpen}
         onClose={() => setIsTourOpen(false)}
+        cityData={initialData}
+      />
+      <ExportShareModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
         cityData={initialData}
       />
     </main>

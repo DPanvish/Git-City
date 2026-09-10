@@ -11,9 +11,10 @@ interface HUDOverlayProps {
   onToggleDayNight?: () => void;
   onOpenCitizens?: () => void;
   onStartTour?: () => void;
+  onOpenExport?: () => void;
 }
 
-export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCitizens, onStartTour }: HUDOverlayProps) {
+export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCitizens, onStartTour, onOpenExport }: HUDOverlayProps) {
   const allBuildings = cityData.districts.flatMap(d => d.buildings);
   const totalRepos = allBuildings.length;
   const totalStars = allBuildings.reduce((acc, b) => acc + b.stars, 0);
@@ -69,7 +70,7 @@ export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCi
             <Play className="w-3.5 h-3.5 fill-brand-cyan stroke-brand-cyan" />
             <span className="hidden sm:inline">Guided Tour</span>
           </button>
-          <button className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 border border-white/10 text-xs font-medium transition-all active:scale-95 hover:border-slate-500">
+          <button onClick={onOpenExport} className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 border border-white/10 text-xs font-medium transition-all active:scale-95 hover:border-slate-500">
             <Share2 className="w-3.5 h-3.5 text-slate-300" />
             <span className="hidden sm:inline">Share</span>
           </button>
