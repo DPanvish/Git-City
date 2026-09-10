@@ -9,9 +9,10 @@ interface HUDOverlayProps {
   onResetCamera?: () => void;
   onToggleDayNight?: () => void;
   onOpenCitizens?: () => void;
+  onStartTour?: () => void;
 }
 
-export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCitizens }: HUDOverlayProps) {
+export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCitizens, onStartTour }: HUDOverlayProps) {
   const allBuildings = cityData.districts.flatMap(d => d.buildings);
   const totalRepos = allBuildings.length;
   const totalStars = allBuildings.reduce((acc, b) => acc + b.stars, 0);
@@ -63,7 +64,7 @@ export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCi
         
         {/* Right: Action Buttons */}
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-brand-cyan/10 hover:bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30 text-xs font-medium transition-all active:scale-95 shadow-sm">
+          <button onClick={onStartTour} className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-brand-cyan/10 hover:bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30 text-xs font-medium transition-all active:scale-95 shadow-sm">
             <Play className="w-3.5 h-3.5 fill-brand-cyan stroke-brand-cyan" />
             <span className="hidden sm:inline">Guided Tour</span>
           </button>
