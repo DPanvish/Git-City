@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Building2, Play, Share2, Settings, BarChart3, Layers, TrendingUp, SunMedium, Users, Trees, Search, Orbit, Moon, Expand } from 'lucide-react';
 import { CitySchema } from '@/data/mockCitySchema';
 
@@ -72,9 +73,9 @@ export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCi
             <Share2 className="w-3.5 h-3.5 text-slate-300" />
             <span className="hidden sm:inline">Share</span>
           </button>
-          <button className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 border border-white/10 transition-all active:scale-95 hover:text-white" title="Settings">
+          <Link href="/settings" className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 border border-white/10 transition-all active:scale-95 hover:text-white" title="Settings">
             <Settings className="w-4 h-4" />
-          </button>
+          </Link>
         </div>
       </header>
 
