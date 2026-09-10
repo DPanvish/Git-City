@@ -35,10 +35,12 @@ const CITY_QUERY = `
 `;
 
 export async function fetchLiveCityData(accessToken: string): Promise<CitySchema> {
+  console.log("Debug Token Check: length =", accessToken?.length, "starts with =", accessToken?.substring(0, 4));
+  
   const response = await fetch(GITHUB_GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
-      'Authorization': `bearer ${accessToken}`,
+      'Authorization': `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
       'User-Agent': 'Git-City-App', // GitHub requires a User-Agent header
     },
