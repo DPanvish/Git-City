@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Building2, Play, Share2, Settings, BarChart3, Layers, TrendingUp, SunMedium, Users, Trees, Search, Orbit, Moon, Expand } from 'lucide-react';
-import { CitySchema } from '@/data/mockCitySchema';
+import { CitySchema } from '@/data/types';
 
 interface HUDOverlayProps {
   cityData: CitySchema;

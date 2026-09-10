@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Building2, CornerUpLeft, Download, Link as LinkIcon, Lock, Layers } from 'lucide-react';
-import { CitySchema } from '@/data/mockCitySchema';
+import { CitySchema } from '@/data/types';
 
 interface ExportShareModalProps {
   isOpen: boolean;

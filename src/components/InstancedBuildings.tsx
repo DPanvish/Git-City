@@ -4,7 +4,7 @@ import { useRef, useMemo, useEffect, useState } from 'react';
 import * as THREE from 'three';
 import { ThreeEvent } from '@react-three/fiber';
 import { gsap } from 'gsap';
-import { Building, District } from '@/data/mockCitySchema';
+import { Building, District } from '@/data/types';
 
 interface InstancedBuildingsProps {
   districts: District[];

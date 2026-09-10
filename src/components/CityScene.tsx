@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { CameraControls, ContactShadows } from '@react-three/drei';
 import { InstancedBuildings } from './InstancedBuildings';
-import { CitySchema, Building } from '@/data/mockCitySchema';
+import { CitySchema, Building } from '@/data/types';
 import * as THREE from 'three';
 
 interface CitySceneProps {

@@ -7,7 +7,7 @@ import { HUDOverlay } from '@/components/HUDOverlay';
 import { CitizensModal } from '@/components/CitizensModal';
 import { GuidedTourOverlay } from '@/components/GuidedTourOverlay';
 import { ExportShareModal } from '@/components/ExportShareModal';
-import { CitySchema, Building } from '@/data/mockCitySchema';
+import { CitySchema, Building } from '@/data/types';
 
 interface ClientPageProps {
   initialData: CitySchema;

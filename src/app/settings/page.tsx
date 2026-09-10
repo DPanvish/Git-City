@@ -1,10 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
 import { Building2, ArrowLeft, User, Shield, Info, RefreshCw, Palette, AlertTriangle, LogOut, Trash2 } from 'lucide-react';
-import { mockCityData } from '@/data/mockCitySchema';
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 
-export default function SettingsPage() {
-  const user = mockCityData.user;
+export default async function SettingsPage() {
+  const session = await getServerSession(authOptions);
+  
+  if (!session) {
+    redirect('/');
+  }
+
+  const user = session.user;
 
   return (
     <div className="min-h-screen bg-[#080e1a] text-slate-200 font-sans selection:bg-brand-cyan/20 selection:text-brand-cyan relative">
@@ -70,19 +78,19 @@ export default function SettingsPage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
                   <div className="relative">
-                    <img alt="GitHub Profile" className="w-14 h-14 rounded-full border-2 border-brand-cyan/40 object-cover shadow-md" src={user.avatarUrl || "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"} />
+                    <img alt="GitHub Profile" className="w-14 h-14 rounded-full border-2 border-brand-cyan/40 object-cover shadow-md" src={user?.image || "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"} />
                     <span className="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#0d131f] flex items-center justify-center">
                       <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
                     </span>
                   </div>
                   <div>
                     <div className="flex items-center space-x-2">
-                      <h3 className="text-base font-semibold text-white">@{user.login}</h3>
+                      <h3 className="text-base font-semibold text-white">@{user?.name || "developer"}</h3>
                       <span className="text-[10px] font-mono text-slate-400 bg-[#161c28] px-1.5 py-0.5 rounded border border-[#232b3b]">Octocat Tier</span>
                     </div>
                     <p className="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
                       <Info className="w-3.5 h-3.5 text-slate-500" />
-                      Connected as <span className="text-slate-300 font-mono">alex.dev@gitcity.internal</span>
+                      Connected as <span className="text-slate-300 font-mono">{user?.email || "unknown"}</span>
                     </p>
                   </div>
                 </div>
