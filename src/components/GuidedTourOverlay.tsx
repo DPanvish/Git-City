@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Pause, Play, X } from 'lucide-react';
-import { CitySchema } from '@/data/mockCitySchema';
+import { CitySchema } from '@/data/types';
 
 interface GuidedTourOverlayProps {
   isOpen: boolean;

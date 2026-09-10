@@ -15,9 +15,14 @@ import {
   Layers, 
   Users 
 } from 'lucide-react';
-import { mockCityData } from '@/data/mockCitySchema';
+import { UserProfile } from '@/data/types';
+import { signIn } from 'next-auth/react';
 
-export default function EmptyStatePage() {
+interface EmptyStatePageProps {
+  user: UserProfile;
+}
+
+export default function EmptyStatePage({ user }: EmptyStatePageProps) {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [lastScanTime, setLastScanTime] = useState('Just now (Cache fresh)');
 
@@ -70,12 +75,12 @@ export default function EmptyStatePage() {
               <Compass className="w-4 h-4" />
               Explore Demo
             </Link>
-            <button className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#6ffdee]/10 text-[#6ffdee] text-sm font-semibold hover:bg-[#6ffdee]/20 transition-all border border-[#6ffdee]/30 shadow-[0_0_16px_rgba(76,224,210,0.2)]">
+            <button onClick={() => signIn("github")} className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#6ffdee]/10 text-[#6ffdee] text-sm font-semibold hover:bg-[#6ffdee]/20 transition-all border border-[#6ffdee]/30 shadow-[0_0_16px_rgba(76,224,210,0.2)]">
               <Terminal className="w-4 h-4" />
               Sign in with GitHub
             </button>
             <div className="w-8 h-8 rounded-full border-2 border-[#4ce0d2] bg-[#080e1a] flex items-center justify-center overflow-hidden">
-              <img src={mockCityData.user.avatarUrl || "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"} alt="User Avatar" className="w-full h-full object-cover" />
+              <img src={user.avatarUrl || "https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"} alt="User Avatar" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -103,7 +108,7 @@ export default function EmptyStatePage() {
             </div>
             <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
               <span>ACCOUNT:</span>
-              <span className="text-[#6ffdee] font-medium tracking-wide">@{mockCityData.user.login}</span>
+              <span className="text-[#6ffdee] font-medium tracking-wide">@{user.login}</span>
             </div>
           </div>
         </div>

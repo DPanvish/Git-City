@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Building } from '@/data/mockCitySchema';
+import { Building } from '@/data/types';
 import { Star, GitFork, CircleDot, GitPullRequest, Activity, X, ExternalLink, GitBranch, Copy, Users } from 'lucide-react';
 
 interface RepoInspectorProps {

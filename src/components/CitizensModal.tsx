@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Search, Sparkles } from 'lucide-react';
-import { CitySchema } from '@/data/mockCitySchema';
+import { CitySchema } from '@/data/types';
 
 interface CitizensModalProps {
   isOpen: boolean;

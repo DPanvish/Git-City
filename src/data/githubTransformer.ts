@@ -1,4 +1,4 @@
-import { CitySchema, Building, District } from './mockCitySchema';
+import { CitySchema, Building, District } from './types';
 
 const GITHUB_GRAPHQL_ENDPOINT = 'https://api.github.com/graphql';
 
