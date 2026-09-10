@@ -1,51 +1,129 @@
 @import "tailwindcss";
 
-@theme inline {
-  /* Colors - Night Ops Metropolis */
-  --color-canvas-base: #070A0F;
-  --color-surface: #0B0F17;
-  --color-surface-elevated: #111827;
-  --color-surface-overlay: rgba(17, 24, 39, 0.72);
-  
-  --color-primary: #10B981;
-  --color-primary-glow: rgba(16, 185, 129, 0.25);
-  --color-secondary: #06B6D4;
-  --color-tertiary: #8B5CF6;
+@theme {
+  --color-on-primary-fixed-variant: #00504a;
+  --color-surface-container-lowest: #080e1a;
+  --color-on-surface: #dde2f3;
+  --color-secondary: #bdc7df;
+  --color-on-tertiary-fixed: #001f29;
+  --color-inverse-primary: #006a62;
+  --color-secondary-container: #3d475b;
+  --color-primary-fixed: #69f8ea;
+  --color-on-secondary-container: #abb5cd;
+  --color-surface-bright: #333946;
+  --color-secondary-fixed-dim: #bdc7df;
+  --color-inverse-on-surface: #2a303d;
+  --color-tertiary-container: #70d8ff;
+  --color-primary: #6ffdee;
+  --color-on-primary-container: #006059;
+  --color-surface-variant: #2f3542;
+  --color-outline: #859491;
+  --color-on-surface-variant: #bbcac6;
+  --color-surface-container-low: #161c28;
+  --color-primary-fixed-dim: #46dcce;
+  --color-error-container: #93000a;
+  --color-on-secondary-fixed-variant: #3d475b;
+  --color-inverse-surface: #dde2f3;
+  --color-surface-tint: #46dcce;
+  --color-outline-variant: #3c4947;
+  --color-on-error-container: #ffdad6;
+  --color-on-secondary: #273143;
+  --color-on-secondary-fixed: #111c2d;
+  --color-on-primary: #003733;
+  --color-surface-dim: #0d131f;
+  --color-on-primary-fixed: #00201d;
+  --color-surface-container: #1a202c;
+  --color-background: #0d131f;
+  --color-tertiary-fixed: #baeaff;
+  --color-on-error: #690005;
+  --color-secondary-fixed: #d9e2fb;
+  --color-error: #ffb4ab;
+  --color-on-background: #dde2f3;
+  --color-surface-container-highest: #2f3542;
+  --color-surface-container-high: #242a37;
+  --color-on-tertiary: #003545;
+  --color-primary-container: #4ce0d2;
+  --color-tertiary: #c7edff;
+  --color-on-tertiary-container: #005d76;
+  --color-tertiary-fixed-dim: #5cd4ff;
+  --color-on-tertiary-fixed-variant: #004d62;
+  --color-surface: #0d131f;
 
-  --color-lang-js: #F59E0B;
-  --color-lang-ts: #06B6D4;
-  --color-lang-py: #EC4899;
-  --color-lang-rs: #DEA584;
-  --color-lang-go: #06B6D4;
-  
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
-  --color-border-active: rgba(16, 185, 129, 0.25);
-  
-  --color-text-high: #F9FAFB;
-  --color-text-muted: #9CA3AF;
-  --color-text-ghost: #4B5563;
+  /* Additional colors from 3D Explorer */
+  --color-brand-cyan: #4ce0d2;
+  --color-brand-cyan-dim: rgba(76, 224, 210, 0.15);
+  --color-brand-cyan-glow: rgba(76, 224, 210, 0.4);
+  --color-brand-surface: #0d131f;
+  --color-brand-surface-dim: #080e1a;
+  --color-brand-surface-glass: rgba(13, 19, 31, 0.78);
+  --color-brand-surface-glass-border: rgba(76, 224, 210, 0.18);
+  --color-brand-border: rgba(255, 255, 255, 0.08);
 
-  /* Typography */
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), monospace;
+  --spacing-micro-gap: 0.25rem;
+  --spacing-dock-gap: 0.75rem;
+  --spacing-gutter: 1rem;
+  --spacing-card-pad-md: 1rem;
+  --spacing-metric-gap: 0.5rem;
+  --spacing-hud-edge-pad: 1.5rem;
+  --spacing-card-pad-sm: 0.75rem;
+  --spacing-card-pad-lg: 1.5rem;
+
+  --font-telemetry-lg: "JetBrains Mono", monospace;
+  --font-telemetry-md: "JetBrains Mono", monospace;
+  --font-telemetry-sm: "JetBrains Mono", monospace;
+  --font-headline-md: "Inter", sans-serif;
+  --font-telemetry-code: "JetBrains Mono", monospace;
+  --font-body-md: "Inter", sans-serif;
+  --font-display-hero: "Inter", sans-serif;
+  --font-headline-sm: "Inter", sans-serif;
+  --font-headline-lg: "Inter", sans-serif;
+  --font-caption-caps: "JetBrains Mono", monospace;
+  --font-body-lg: "Inter", sans-serif;
+  --font-body-sm: "Inter", sans-serif;
+  --font-headline-xl: "Inter", sans-serif;
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* We define these classes in standard css below due to v4 variable mapping complexity */
 }
 
-body {
-  background: var(--color-canvas-base);
-  color: var(--color-text-high);
-  font-family: var(--font-sans);
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
 }
 
-/* Base resets for custom utilities if needed */
-.hud-panel {
-  background: rgba(11, 15, 23, 0.75);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--color-border-subtle);
+::-webkit-scrollbar {
+  display: none;
 }
 
-.hud-panel-active {
-  background: rgba(17, 24, 39, 0.88);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.6);
+@layer utilities {
+  .text-telemetry-lg { font-size: 16px; line-height: 22px; letter-spacing: -0.01em; font-weight: 500; }
+  .text-telemetry-md { font-size: 13px; line-height: 18px; font-weight: 500; }
+  .text-telemetry-sm { font-size: 11px; line-height: 14px; letter-spacing: 0.02em; font-weight: 500; }
+  .text-headline-md { font-size: 20px; line-height: 28px; letter-spacing: -0.01em; font-weight: 600; }
+  .text-telemetry-code { font-size: 12px; line-height: 16px; font-weight: 400; }
+  .text-body-md { font-size: 14px; line-height: 20px; font-weight: 400; }
+  .text-display-hero { font-size: 48px; line-height: 56px; letter-spacing: -0.03em; font-weight: 700; }
+  .text-headline-sm { font-size: 16px; line-height: 24px; letter-spacing: -0.005em; font-weight: 600; }
+  .text-headline-lg { font-size: 24px; line-height: 32px; letter-spacing: -0.015em; font-weight: 600; }
+  .text-caption-caps { font-size: 10px; line-height: 12px; letter-spacing: 0.08em; font-weight: 700; text-transform: uppercase; }
+  .text-body-lg { font-size: 16px; line-height: 24px; font-weight: 400; }
+  .text-body-sm { font-size: 12px; line-height: 16px; font-weight: 400; }
+  .text-headline-xl { font-size: 32px; line-height: 40px; letter-spacing: -0.02em; font-weight: 600; }
+
+  .shadow-hud { box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.08); }
+  .shadow-hud-glow { box-shadow: 0 0 24px -2px rgba(76, 224, 210, 0.25), inset 0 0 0 1px rgba(76, 224, 210, 0.35); }
+  .shadow-neon { box-shadow: 0 0 15px rgba(76, 224, 210, 0.5); }
 }

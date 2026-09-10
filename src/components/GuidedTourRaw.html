@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Git City - Cinematic Guided Tour</title>
+<!-- Tailwind CSS CDN with forms & container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Custom Tailwind Config -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#080e1a',
+            surface: '#0d131f',
+            cyanAccent: '#4ce0d2',
+            cyanGlow: 'rgba(76, 224, 210, 0.4)',
+            amberGlow: '#f59e0b',
+            purpleNeon: '#a855f7',
+          },
+          fontFamily: {
+            mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          boxShadow: {
+            'neon-cyan': '0 0 20px -2px rgba(76, 224, 210, 0.45)',
+            'beacon-glow': '0 0 35px 8px rgba(76, 224, 210, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles: Animations & Background Gradients -->
+<style data-purpose="custom-animations">
+    @keyframes pulseHalo {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.4);
+        opacity: 0.15;
+      }
+    }
+
+    @keyframes floatPin {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes scanlineMove {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 100%;
+      }
+    }
+
+    .animate-pulse-halo {
+      animation: pulseHalo 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .animate-float-pin {
+      animation: floatPin 4s ease-in-out infinite;
+    }
+
+    /* Perspective ground grid styling */
+    .cyber-grid {
+      background-size: 60px 60px;
+      background-image: 
+        linear-gradient(to right, rgba(76, 224, 210, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(76, 224, 210, 0.07) 1px, transparent 1px);
+      transform: perspective(700px) rotateX(65deg);
+      transform-origin: center bottom;
+    }
+
+    /* Glow utilities for SVGs */
+    .glow-cyan-filter {
+      filter: drop-shadow(0px 0px 8px rgba(76, 224, 210, 0.65));
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-slate-200 font-sans h-screen w-screen overflow-hidden select-none relative flex flex-col justify-between">
+<!-- BEGIN: Cinematic Atmosphere & Vignette -->
+<div class="pointer-events-none absolute inset-0 z-30 flex flex-col justify-between" data-purpose="cinematic-letterbox">
+<!-- Top anamorphic shadow -->
+<div class="h-32 bg-gradient-to-b from-black/90 via-black/40 to-transparent"></div>
+<!-- Subtle perimeter vignette -->
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(5,9,16,0.85)_100%)]"></div>
+<!-- Bottom anamorphic shadow -->
+<div class="h-44 bg-gradient-to-t from-black/95 via-black/50 to-transparent"></div>
+</div>
+<!-- END: Cinematic Atmosphere & Vignette -->
+<!-- BEGIN: 3D Metropolis Background Canvas -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" data-purpose="city-metropolis-canvas">
+<!-- Distant atmospheric nebula / ambient light sources -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-cyan-950/20 rounded-full blur-[140px]"></div>
+<div class="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-purple-900/15 rounded-full blur-[120px]"></div>
+<div class="absolute top-1/2 right-1/4 w-[500px] h-[350px] bg-teal-900/20 rounded-full blur-[130px]"></div>
+<!-- 3D Perspective Ground Grid -->
+<div class="absolute inset-x-0 bottom-[-180px] h-[650px] cyber-grid opacity-75"></div>
+<!-- SVG Isometric Metropolis Skyline and Glowing Architecture -->
+<svg class="absolute inset-0 w-full h-full" fill="none" preserveaspectratio="xMidYMid slice" viewbox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Transit beam linear gradient -->
+<lineargradient id="transitGlow" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#4ce0d2" stop-opacity="0.05"></stop>
+<stop offset="45%" stop-color="#4ce0d2" stop-opacity="0.9"></stop>
+<stop offset="55%" stop-color="#4ce0d2" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#4ce0d2" stop-opacity="0.05"></stop>
+</lineargradient>
+<!-- Building fill gradients -->
+<lineargradient id="buildingGenesisFront" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#142838" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#0b1724" stop-opacity="0.95"></stop>
+</lineargradient>
+<lineargradient id="buildingGenesisSide" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#0e1f2d" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#070e17" stop-opacity="0.98"></stop>
+</lineargradient>
+<lineargradient id="buildingSecondary" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#102030" stop-opacity="0.75"></stop>
+<stop offset="100%" stop-color="#09121c" stop-opacity="0.9"></stop>
+</lineargradient>
+<lineargradient id="buildingTertiary" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#0c1724" stop-opacity="0.5"></stop>
+<stop offset="100%" stop-color="#060c14" stop-opacity="0.8"></stop>
+</lineargradient>
+<!-- Spotlight conic / linear effect onto Genesis Tower -->
+<lineargradient id="spotlightBeam" x1="50%" x2="50%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4ce0d2" stop-opacity="0.18"></stop>
+<stop offset="85%" stop-color="#4ce0d2" stop-opacity="0.02"></stop>
+<stop offset="100%" stop-color="#4ce0d2" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Distant Background Silhouette Buildings -->
+<path d="M120 620 L120 540 L160 520 L200 540 L200 620 Z" fill="url(#buildingTertiary)" opacity="0.6" stroke="#2a4555" stroke-width="0.75"></path>
+<path d="M260 640 L260 510 L330 470 L400 510 L400 640 Z" fill="url(#buildingTertiary)" opacity="0.6" stroke="#2a4555" stroke-width="0.75"></path>
+<path d="M1180 610 L1180 500 L1240 470 L1300 500 L1300 610 Z" fill="url(#buildingTertiary)" opacity="0.6" stroke="#2a4555" stroke-width="0.75"></path>
+<path d="M1360 630 L1360 550 L1420 520 L1480 550 L1480 630 Z" fill="url(#buildingTertiary)" opacity="0.6" stroke="#2a4555" stroke-width="0.75"></path>
+<!-- Curved Skyway / Transit Beams Connecting Buildings -->
+<path d="M180 620 C 450 670, 720 640, 800 630 C 950 610, 1180 625, 1260 610" fill="none" opacity="0.6" stroke="#264b59" stroke-dasharray="6,8" stroke-width="2"></path>
+<path class="glow-cyan-filter" d="M160 635 C 500 705, 760 670, 830 655 C 990 620, 1200 640, 1280 620" fill="none" stroke="url(#transitGlow)" stroke-width="2.5"></path>
+<!-- Transit Particle Nodes -->
+<circle class="glow-cyan-filter" cx="540" cy="655" fill="#4ce0d2" r="4.5"></circle>
+<circle class="glow-cyan-filter" cx="830" cy="655" fill="#ffffff" r="5"></circle>
+<circle cx="1060" cy="632" fill="#4ce0d2" r="3.5"></circle>
+<!-- Left Cluster: Midground Skyscraper (Frontend UI / App) -->
+<g opacity="0.78">
+<!-- Isometric Roof -->
+<polygon fill="#1b364a" points="310,400 380,360 450,400 380,440" stroke="#4ce0d2" stroke-width="1.2"></polygon>
+<!-- Front Left Face -->
+<polygon fill="url(#buildingSecondary)" points="310,400 380,440 380,660 310,610" stroke="#22485f" stroke-width="1"></polygon>
+<!-- Front Right Face -->
+<polygon fill="#09141f" points="380,440 450,400 450,610 380,660" stroke="#22485f" stroke-width="1"></polygon>
+<!-- Window Matrix (Commit Glows) -->
+<rect class="opacity-90" fill="#fbbf24" height="15" width="10" x="330" y="445"></rect>
+<rect class="opacity-90" fill="#4ce0d2" height="15" width="10" x="350" y="440"></rect>
+<rect class="opacity-75" fill="#4ce0d2" height="15" width="10" x="330" y="475"></rect>
+<rect class="opacity-30" fill="#64748b" height="15" width="10" x="350" y="470"></rect>
+<rect class="opacity-80" fill="#a855f7" height="15" width="10" x="330" y="505"></rect>
+<rect class="opacity-90" fill="#4ce0d2" height="15" width="10" x="350" y="500"></rect>
+<rect class="opacity-60" fill="#38bdf8" height="15" width="10" x="330" y="535"></rect>
+<rect class="opacity-80" fill="#4ce0d2" height="15" width="10" x="400" y="445"></rect>
+<rect class="opacity-90" fill="#fbbf24" height="15" width="10" x="420" y="435"></rect>
+<rect class="opacity-25" fill="#64748b" height="15" width="10" x="400" y="475"></rect>
+<rect class="opacity-75" fill="#4ce0d2" height="15" width="10" x="420" y="465"></rect>
+</g>
+<!-- Smaller Midground Building -->
+<g opacity="0.65">
+<polygon fill="#142c3d" points="490,535 530,510 570,535 530,560" stroke="#33617b" stroke-width="1"></polygon>
+<polygon fill="#0c1a24" points="490,535 530,560 530,680 490,650" stroke="#1c3e53" stroke-width="1"></polygon>
+<polygon fill="#060e14" points="530,560 570,535 570,650 530,680" stroke="#1c3e53" stroke-width="1"></polygon>
+<rect fill="#4ce0d2" height="12" opacity="0.8" width="7" x="505" y="565"></rect>
+<rect fill="#fbbf24" height="12" opacity="0.9" width="7" x="505" y="590"></rect>
+</g>
+<!-- Right Cluster: High-Tech Tower (Neural Engine) -->
+<g opacity="0.8">
+<polygon fill="#183345" points="980,420 1060,375 1140,420 1060,465" stroke="#37728f" stroke-width="1.2"></polygon>
+<polygon fill="url(#buildingSecondary)" points="980,420 1060,465 1060,670 980,620" stroke="#22485f" stroke-width="1"></polygon>
+<polygon fill="#09141f" points="1060,465 1140,420 1140,620 1060,670" stroke="#22485f" stroke-width="1"></polygon>
+<!-- Windows -->
+<rect fill="#4ce0d2" height="16" opacity="0.8" width="10" x="1000" y="460"></rect>
+<rect fill="#38bdf8" height="16" opacity="0.75" width="10" x="1025" y="450"></rect>
+<rect fill="#64748b" height="16" opacity="0.3" width="10" x="1000" y="490"></rect>
+<rect fill="#a855f7" height="16" opacity="0.7" width="10" x="1025" y="480"></rect>
+<rect fill="#4ce0d2" height="16" opacity="0.9" width="10" x="1085" y="450"></rect>
+<rect fill="#fbbf24" height="16" opacity="0.85" width="10" x="1110" y="440"></rect>
+</g>
+<!-- Far Right Forked Repo (Green Bio-Terrace) -->
+<g opacity="0.7">
+<polygon fill="#10362f" points="1210,580 1255,550 1300,580 1255,610" stroke="#10b981" stroke-width="1.5"></polygon>
+<polygon fill="#09211c" points="1210,580 1255,610 1255,700 1210,665" stroke="#164e40" stroke-width="1"></polygon>
+<polygon fill="#051512" points="1255,610 1300,580 1300,665 1255,700" stroke="#164e40" stroke-width="1"></polygon>
+<!-- Green Core bio-ring -->
+<ellipse cx="1255" cy="580" fill="#10b981" opacity="0.45" rx="18" ry="8" stroke="#34d399" stroke-width="1.5"></ellipse>
+</g>
+<!-- CINEMATIC FOCUS: Dramatic Overhead Spotlight onto Genesis Landmark -->
+<polygon fill="url(#spotlightBeam)" points="800,0 620,780 980,780"></polygon>
+<!-- CINEMATIC FOCUS LANDMARK: Genesis Monolith Skyscraper (@developer/dotfiles-archive) -->
+<g id="genesis-tower">
+<!-- Spire Aerial Antenna -->
+<line class="glow-cyan-filter" stroke="#4ce0d2" stroke-width="2.5" x1="800" x2="800" y1="210" y2="290"></line>
+<!-- Floating Holographic Spire Ring -->
+<ellipse class="glow-cyan-filter opacity-90" cx="800" cy="245" fill="none" rx="36" ry="11" stroke="#4ce0d2" stroke-width="2"></ellipse>
+<!-- Rooftop Polygon -->
+<polygon class="glow-cyan-filter" fill="#1c3e53" points="695,290 800,230 905,290 800,350" stroke="#4ce0d2" stroke-width="2.5"></polygon>
+<!-- Left Facade -->
+<polygon fill="url(#buildingGenesisFront)" points="695,290 800,350 800,720 695,640" stroke="#4ce0d2" stroke-width="2"></polygon>
+<!-- Right Facade -->
+<polygon fill="url(#buildingGenesisSide)" points="800,350 905,290 905,640 800,720" stroke="#4ce0d2" stroke-width="2"></polygon>
+<!-- High-Density Commit Windows on Left Facade -->
+<!-- Row 1 -->
+<rect class="glow-cyan-filter" fill="#4ce0d2" height="18" rx="1" width="12" x="715" y="340"></rect>
+<rect class="opacity-95" fill="#fbbf24" height="18" rx="1" width="12" x="740" y="330"></rect>
+<rect class="opacity-95" fill="#34d399" height="18" rx="1" width="12" x="765" y="320"></rect>
+<!-- Row 2 -->
+<rect fill="#38bdf8" height="18" opacity="0.8" rx="1" width="12" x="715" y="375"></rect>
+<rect class="glow-cyan-filter" fill="#a855f7" height="18" opacity="0.9" rx="1" width="12" x="740" y="365"></rect>
+<rect class="glow-cyan-filter" fill="#4ce0d2" height="18" rx="1" width="12" x="765" y="355"></rect>
+<!-- Row 3 -->
+<rect fill="#64748b" height="18" opacity="0.4" rx="1" width="12" x="715" y="410"></rect>
+<rect class="opacity-95" fill="#fbbf24" height="18" rx="1" width="12" x="740" y="400"></rect>
+<rect class="glow-cyan-filter" fill="#4ce0d2" height="18" rx="1" width="12" x="765" y="390"></rect>
+<!-- Row 4 -->
+<rect class="glow-cyan-filter" fill="#4ce0d2" height="18" rx="1" width="12" x="715" y="445"></rect>
+<rect class="glow-cyan-filter" fill="#4ce0d2" height="18" rx="1" width="12" x="740" y="435"></rect>
+<rect fill="#a855f7" height="18" opacity="0.85" rx="1" width="12" x="765" y="425"></rect>
+<!-- Row 5 -->
+<rect fill="#34d399" height="18" opacity="0.9" rx="1" width="12" x="715" y="480"></rect>
+<rect fill="#64748b" height="18" opacity="0.3" rx="1" width="12" x="740" y="470"></rect>
+<rect class="glow-cyan-filter" fill="#4ce0d2" height="18" rx="1" width="12" x="765" y="460"></rect>
+<!-- Windows on Right Facade -->
+<rect fill="#4ce0d2" height="18" opacity="0.75" rx="1" width="12" x="825" y="335"></rect>
+<rect fill="#64748b" height="18" opacity="0.35" rx="1" width="12" x="850" y="325"></rect>
+<rect fill="#fbbf24" height="18" opacity="0.8" rx="1" width="12" x="875" y="315"></rect>
+<rect fill="#a855f7" height="18" opacity="0.7" rx="1" width="12" x="825" y="370"></rect>
+<rect fill="#4ce0d2" height="18" opacity="0.9" rx="1" width="12" x="850" y="360"></rect>
+<rect fill="#38bdf8" height="18" opacity="0.6" rx="1" width="12" x="875" y="350"></rect>
+<rect fill="#4ce0d2" height="18" opacity="0.85" rx="1" width="12" x="825" y="405"></rect>
+<rect fill="#4ce0d2" height="18" opacity="0.85" rx="1" width="12" x="850" y="395"></rect>
+<rect fill="#64748b" height="18" opacity="0.25" rx="1" width="12" x="875" y="385"></rect>
+</g>
+</svg>
+</div>
+<!-- END: 3D Metropolis Background Canvas -->
+<!-- BEGIN: Focal Hologram Beacon Pin -->
+<!-- Anchored above the Genesis Tower at center -->
+<div class="absolute top-[16%] left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center animate-float-pin" data-purpose="holographic-building-tag">
+<!-- Callout Card -->
+<div class="relative flex items-center gap-2.5 px-4 py-2 rounded-xl bg-surface/90 border border-cyanAccent/60 shadow-neon-cyan backdrop-blur-md">
+<!-- Pulsing Node Indicator -->
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyanAccent opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-cyanAccent"></span>
+</span>
+<!-- Landmark Repo Label -->
+<div class="flex items-center space-x-1.5 font-mono text-xs tracking-wide">
+<span class="text-amber-400 font-bold">★</span>
+<span class="font-bold text-white tracking-wider">dotfiles-archive</span>
+<span class="text-slate-500">•</span>
+<span class="text-cyanAccent/90">Founded Oct 2018</span>
+</div>
+<!-- Badge Pill -->
+<span class="ml-1 px-1.5 py-0.5 text-[10px] uppercase font-mono tracking-widest bg-cyan-500/20 text-cyan-300 rounded border border-cyan-400/30">
+        Milestone
+      </span>
+</div>
+<!-- Vertical Pointer Line down to antenna -->
+<div class="w-[2px] h-10 bg-gradient-to-b from-cyanAccent to-transparent opacity-80"></div>
+<!-- Ground Pulsing Locator Ring -->
+<div class="w-7 h-2 rounded-full border border-cyanAccent animate-pulse-halo -mt-1 shadow-neon-cyan"></div>
+</div>
+<!-- END: Focal Hologram Beacon Pin -->
+<!-- BEGIN: Top Cinematic Navigation Chrome -->
+<header class="relative z-40 w-full px-8 pt-7 flex items-center justify-between pointer-events-auto" data-purpose="tour-top-chrome">
+<!-- Left: Guided Tour Episode Pill -->
+<div class="flex items-center space-x-3.5 bg-surface/85 border border-cyanAccent/30 px-4 py-2.5 rounded-full backdrop-blur-xl shadow-lg">
+<div class="flex items-center space-x-2">
+<span class="h-2.5 w-2.5 rounded-full bg-cyanAccent animate-pulse"></span>
+<span class="font-mono text-xs tracking-wider text-cyan-300 font-bold uppercase">
+          Guided Tour <span class="text-slate-500 mx-1">//</span> Episode 01: The Origin
+        </span>
+</div>
+<div class="h-3 w-[1px] bg-slate-700"></div>
+<span class="font-mono text-xs text-slate-400 font-medium tracking-tight">
+        01:24 <span class="text-slate-600">/</span> 04:30
+      </span>
+</div>
+<!-- Right: Playback Controls & Exit Tour -->
+<div class="flex items-center space-x-3">
+<!-- Step Back Button -->
+<button class="h-10 w-10 flex items-center justify-center rounded-xl bg-surface/80 border border-slate-700/80 text-slate-300 hover:text-cyanAccent hover:border-cyanAccent/50 hover:bg-slate-800/80 transition-all backdrop-blur-md active:scale-95" title="Previous milestone [A]" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<!-- Play / Pause Master Button -->
+<button class="h-10 px-4 flex items-center space-x-2 rounded-xl bg-cyan-950/60 border border-cyanAccent/60 text-cyanAccent hover:bg-cyan-900/50 hover:shadow-neon-cyan transition-all backdrop-blur-md active:scale-95" title="Pause tour [Space]" type="button">
+<!-- Pause Icon -->
+<svg class="w-4 h-4 fill-cyanAccent" viewbox="0 0 24 24">
+<rect height="16" rx="1.5" width="4" x="6" y="4"></rect>
+<rect height="16" rx="1.5" width="4" x="14" y="4"></rect>
+</svg>
+<span class="font-mono text-xs font-semibold tracking-wider uppercase">Auto-Nav</span>
+</button>
+<!-- Step Forward Button -->
+<button class="h-10 w-10 flex items-center justify-center rounded-xl bg-surface/80 border border-slate-700/80 text-slate-300 hover:text-cyanAccent hover:border-cyanAccent/50 hover:bg-slate-800/80 transition-all backdrop-blur-md active:scale-95" title="Next milestone [D]" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</button>
+<!-- Exit Tour Glassmorphic Button -->
+<button class="h-10 px-4 flex items-center space-x-2 rounded-xl bg-surface/80 border border-red-500/30 text-slate-300 hover:text-red-300 hover:border-red-400/60 hover:bg-red-950/30 transition-all backdrop-blur-md ml-1 active:scale-95" title="Exit tour [ESC]" type="button">
+<svg class="w-4 h-4 text-red-400" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<line x1="18" x2="6" y1="6" y2="18"></line>
+<line x1="6" x2="18" y1="6" y2="18"></line>
+</svg>
+<span class="font-mono text-xs font-semibold tracking-wider uppercase">Exit Tour</span>
+<span class="text-[10px] px-1.5 py-0.2 font-mono bg-slate-800/90 text-slate-400 rounded border border-slate-700">ESC</span>
+</button>
+</div>
+</header>
+<!-- END: Top Cinematic Navigation Chrome -->
+<!-- BEGIN: Bottom Cinematic Tour Bar & Caption -->
+<main class="relative z-40 w-full pb-8 px-6 pointer-events-auto" data-purpose="cinematic-narrative-panel">
+<!-- Centered floating glassmorphic console -->
+<div class="max-w-4xl mx-auto rounded-2xl bg-surface/90 border border-cyanAccent/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-2xl p-6 relative overflow-hidden">
+<!-- Top Subtle Glow Line -->
+<div class="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-cyanAccent/70 to-transparent"></div>
+<!-- Narrative Subtitle / Breadcrumb Context -->
+<div class="text-center mb-1.5">
+<span class="font-mono text-[11px] uppercase tracking-[0.2em] text-cyanAccent/90 font-bold">
+          Stop 1 of 4 — The Genesis Foundation <span class="text-slate-600">//</span> @developer
+        </span>
+</div>
+<!-- Main Narrative Caption Text -->
+<div class="text-center mb-6">
+<h1 class="text-2xl md:text-3xl font-medium tracking-tight text-white/95 leading-snug drop-shadow-md">
+          “This is where it all started — your first commit, 6 years ago.”
+        </h1>
+<p class="text-slate-400 text-xs mt-1 font-mono">
+          Camera anchored at Sector 01 • Coordinates: 37°N 122°W • Commit ID: <span class="text-cyanAccent/80">#e4f901a</span>
+</p>
+</div>
+<!-- Interactive Scrubber Progress Bar Track -->
+<div class="relative w-full px-6 py-4">
+<!-- Background Track Line -->
+<div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-[3px] bg-slate-800 rounded-full"></div>
+<!-- Glowing Active Progress Line (Stop 1 is 0% to ~8% progress) -->
+<div class="absolute left-6 top-1/2 -translate-y-1/2 h-[3px] w-[14%] bg-gradient-to-r from-cyan-400 to-cyanAccent shadow-neon-cyan rounded-full"></div>
+<!-- 4 Milestone Ticks Distributed Across Timeline -->
+<div class="relative flex justify-between items-center w-full z-10">
+<!-- Stop 1: Current / Active -->
+<button class="group flex flex-col items-center text-left focus:outline-none cursor-pointer" type="button">
+<div class="relative flex items-center justify-center">
+<span class="absolute w-7 h-7 rounded-full bg-cyanAccent/20 animate-ping opacity-60"></span>
+<div class="w-4 h-4 rounded-full bg-cyanAccent border-2 border-white shadow-neon-cyan flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-obsidian"></div>
+</div>
+</div>
+<div class="mt-2 text-center">
+<span class="block font-mono text-xs font-bold text-cyanAccent tracking-wide">Oldest Repo</span>
+<span class="block text-[10px] text-cyan-200/70 font-mono">Oct 2018</span>
+</div>
+</button>
+<!-- Stop 2: Upcoming -->
+<button class="group flex flex-col items-center focus:outline-none cursor-pointer" type="button">
+<div class="w-3.5 h-3.5 rounded-full bg-slate-800 border-2 border-slate-600 group-hover:border-cyanAccent/70 group-hover:bg-slate-700 transition-colors"></div>
+<div class="mt-2 text-center opacity-70 group-hover:opacity-100 transition-opacity">
+<span class="block font-mono text-xs font-medium text-slate-300">Most Active</span>
+<span class="block text-[10px] text-slate-500 font-mono">1,420 commits</span>
+</div>
+</button>
+<!-- Stop 3: Upcoming -->
+<button class="group flex flex-col items-center focus:outline-none cursor-pointer" type="button">
+<div class="w-3.5 h-3.5 rounded-full bg-slate-800 border-2 border-slate-600 group-hover:border-cyanAccent/70 group-hover:bg-slate-700 transition-colors"></div>
+<div class="mt-2 text-center opacity-70 group-hover:opacity-100 transition-opacity">
+<span class="block font-mono text-xs font-medium text-slate-300">Most Starred</span>
+<span class="block text-[10px] text-slate-500 font-mono">1.8k stars</span>
+</div>
+</button>
+<!-- Stop 4: Upcoming -->
+<button class="group flex flex-col items-center focus:outline-none cursor-pointer" type="button">
+<div class="w-3.5 h-3.5 rounded-full bg-slate-800 border-2 border-slate-600 group-hover:border-cyanAccent/70 group-hover:bg-slate-700 transition-colors"></div>
+<div class="mt-2 text-center opacity-70 group-hover:opacity-100 transition-opacity">
+<span class="block font-mono text-xs font-medium text-slate-300">Current Streak</span>
+<span class="block text-[10px] text-slate-500 font-mono">28 days 🔥</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Bottom Status Row: Time scrubber, Speed Selector, and Keyboard Shortcuts Hint -->
+<div class="mt-2 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 font-mono">
+<!-- Time Status -->
+<div class="flex items-center space-x-3">
+<div class="flex items-center space-x-1">
+<span class="text-cyanAccent font-semibold">0:45</span>
+<span class="text-slate-600">/</span>
+<span>3:20</span>
+</div>
+<span class="text-slate-700">|</span>
+<!-- Playback Speed Pill Button -->
+<button class="px-2 py-0.5 rounded bg-slate-800/80 text-slate-300 border border-slate-700 hover:border-cyanAccent/40 transition-colors" type="button">
+            1.0x
+          </button>
+</div>
+<!-- Keyboard navigation hints -->
+<div class="hidden sm:flex items-center space-x-3 text-[11px] text-slate-500">
+<span><kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">←</kbd> Prev [A]</span>
+<span>•</span>
+<span><kbd class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">Space</kbd> Pause</span>
+<span>•</span>
+<span>Next [D] <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">→</kbd></span>
+</div>
+</div>
+</div>
+</main>
+<!-- END: Bottom Cinematic Tour Bar & Caption -->
+<!-- BEGIN: Interactive Keyboard & Controls Script -->
+<script data-purpose="tour-interaction-handler">
+    document.addEventListener('DOMContentLoaded', () => {
+      // Allow keyboard shortcuts for cinematic walk-through
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          // ESC closes or triggers exit
+          console.log('Exit Guided Tour requested.');
+        } else if (e.code === 'Space') {
+          e.preventDefault();
+          console.log('Toggle Play / Pause');
+        } else if (e.key === 'ArrowRight' || e.key.toLowerCase() === 'd') {
+          console.log('Advance to Next Landmark Milestone');
+        } else if (e.key === 'ArrowLeft' || e.key.toLowerCase() === 'a') {
+          console.log('Return to Previous Milestone');
+        }
+      });
+    });
+  </script>
+<!-- END: Interactive Keyboard & Controls Script -->
+</body></html>

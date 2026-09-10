@@ -1,0 +1,507 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed-variant": "#00504a", "surface-container-lowest": "#080e1a", "on-surface": "#dde2f3", "secondary": "#bdc7df", "on-tertiary-fixed": "#001f29", "inverse-primary": "#006a62", "secondary-container": "#3d475b", "primary-fixed": "#69f8ea", "on-secondary-container": "#abb5cd", "surface-bright": "#333946", "secondary-fixed-dim": "#bdc7df", "inverse-on-surface": "#2a303d", "tertiary-container": "#70d8ff", "primary": "#6ffdee", "on-primary-container": "#006059", "surface-variant": "#2f3542", "outline": "#859491", "on-surface-variant": "#bbcac6", "surface-container-low": "#161c28", "primary-fixed-dim": "#46dcce", "error-container": "#93000a", "on-secondary-fixed-variant": "#3d475b", "inverse-surface": "#dde2f3", "surface-tint": "#46dcce", "outline-variant": "#3c4947", "on-error-container": "#ffdad6", "on-secondary": "#273143", "on-secondary-fixed": "#111c2d", "on-primary": "#003733", "surface-dim": "#0d131f", "on-primary-fixed": "#00201d", "surface-container": "#1a202c", "background": "#0d131f", "tertiary-fixed": "#baeaff", "on-error": "#690005", "secondary-fixed": "#d9e2fb", "error": "#ffb4ab", "on-background": "#dde2f3", "surface-container-highest": "#2f3542", "surface-container-high": "#242a37", "on-tertiary": "#003545", "primary-container": "#4ce0d2", "tertiary": "#c7edff", "on-tertiary-container": "#005d76", "tertiary-fixed-dim": "#5cd4ff", "on-tertiary-fixed-variant": "#004d62", "surface": "#0d131f" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "micro-gap": "0.25rem", "dock-gap": "0.75rem", "gutter": "1rem", "card-pad-md": "1rem", "metric-gap": "0.5rem", "hud-edge-pad": "1.5rem", "card-pad-sm": "0.75rem", "card-pad-lg": "1.5rem" }, "fontFamily": { "telemetry-lg": [ "JetBrains Mono" ], "telemetry-md": [ "JetBrains Mono" ], "telemetry-sm": [ "JetBrains Mono" ], "headline-md": [ "Inter" ], "telemetry-code": [ "JetBrains Mono" ], "body-md": [ "Inter" ], "display-hero": [ "Inter" ], "headline-sm": [ "Inter" ], "headline-lg": [ "Inter" ], "caption-caps": [ "JetBrains Mono" ], "body-lg": [ "Inter" ], "body-sm": [ "Inter" ], "headline-xl": [ "Inter" ] }, "fontSize": { "telemetry-lg": [ "16px", { "lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "500" } ], "telemetry-md": [ "13px", { "lineHeight": "18px", "fontWeight": "500" } ], "telemetry-sm": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" } ], "headline-md": [ "20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "telemetry-code": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "display-hero": [ "48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" } ], "headline-sm": [ "16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "600" } ], "headline-lg": [ "24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "caption-caps": [ "10px", { "lineHeight": "12px", "letterSpacing": "0.08em", "fontWeight": "700" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "400" } ], "body-sm": [ "12px", { "lineHeight": "16px", "fontWeight": "400" } ], "headline-xl": [ "32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-dim/80 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.45)]"><div class="h-14 w-full px-hud-edge-pad flex items-center justify-between"><div class="flex items-center gap-gutter"><a class="flex items-center gap-metric-gap group" data-path="landing" href="#"><div class="w-7 h-7 rounded bg-surface-container-high flex items-center justify-center text-primary-container shadow-[0_0_12px_rgba(76,224,210,0.25)] transition-all group-hover:shadow-[0_0_16px_rgba(76,224,210,0.5)]"><span class="material-symbols-outlined text-[18px]">apartment</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary flex items-center gap-micro-gap drop-shadow-[0_0_8px_rgba(111,253,238,0.4)]">GIT CITY</span></div></a><div class="hidden md:inline-flex items-center gap-metric-gap px-card-pad-sm py-micro-gap rounded-full bg-surface-container-lowest/80"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span></span><span class="font-caption-caps text-caption-caps text-on-surface-variant">STATUS: GRID ONLINE // V1.0</span></div></div><nav class="hidden lg:flex items-center gap-gutter" data-active-classes="bg-primary-container text-on-primary-container font-bold rounded-lg"><a aria-current="page" class="transition-colors bg-primary-container text-on-primary-container font-bold rounded-lg" data-path="landing" href="#">Overview</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="city-explorer" href="#">Districts</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="architecture" href="#">Architecture</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="telemetry-docs" href="#">Telemetry Docs</a></nav><div class="flex items-center gap-dock-gap"><a class="hidden sm:inline-flex items-center gap-micro-gap px-card-pad-md py-micro-gap rounded-lg bg-surface-container-low text-primary-container font-telemetry-sm text-telemetry-sm hover:bg-surface-container-high hover:text-on-surface transition-all shadow-[0_0_12px_rgba(76,224,210,0.12)]" data-path="city-explorer" href="#"><span class="material-symbols-outlined text-[16px]">explore</span>Explore Demo</a><a class="inline-flex items-center gap-micro-gap px-card-pad-md py-micro-gap rounded-lg bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold hover:bg-primary-fixed transition-all shadow-[0_0_16px_rgba(76,224,210,0.35)]" data-path="auth-connect" href="#"><span class="material-symbols-outlined text-[18px]">terminal</span>Sign in with GitHub</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-14 bg-background"><div class="flex flex-col w-full px-hud-edge-pad py-card-pad-lg space-y-card-pad-lg text-on-surface">
+<!-- Top Breadcrumb & Canvas Return Toolbar -->
+<div class="w-full flex flex-col md:flex-row md:items-center justify-between gap-dock-gap pb-card-pad-md">
+<div class="flex flex-wrap items-center gap-metric-gap">
+<div class="flex items-center gap-micro-gap px-card-pad-sm py-micro-gap rounded-lg bg-surface-container-high text-primary font-telemetry-sm text-telemetry-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">apartment</span>
+<span class="tracking-wider">GIT CITY METROPOLIS</span>
+</div>
+<span class="text-on-surface-variant font-telemetry-sm text-telemetry-sm">/</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant tracking-wider">SECTOR // CIVIC_DISTRICT</span>
+<span class="text-on-surface-variant font-telemetry-sm text-telemetry-sm">/</span>
+<div class="inline-flex items-center gap-micro-gap px-card-pad-sm py-micro-gap rounded-full bg-surface-container-low text-secondary font-caption-caps text-caption-caps">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+        METROPOLIS CIVIC REGISTRY
+      </div>
+</div>
+<!-- Quick Switch / Return to 3D View -->
+<div class="flex items-center gap-dock-gap">
+<div class="flex items-center p-micro-gap rounded-lg bg-surface-container-lowest">
+<button class="px-card-pad-md py-micro-gap rounded font-telemetry-sm text-telemetry-sm bg-primary-container text-on-primary-container font-semibold transition-all">
+          Civic Dashboard
+        </button>
+<button class="px-card-pad-md py-micro-gap rounded font-telemetry-sm text-telemetry-sm text-on-surface-variant hover:text-on-surface transition-colors">
+          Audit Registry
+        </button>
+</div>
+<a class="inline-flex items-center gap-micro-gap px-card-pad-md py-micro-gap rounded-lg bg-surface-container-high hover:bg-surface-bright text-primary font-headline-sm text-headline-sm transition-all" data-path="city-explorer" href="#">
+<span class="material-symbols-outlined text-[18px]">view_in_ar</span>
+<span class="">Return to 3D Metropolis Canvas</span>
+</a>
+</div>
+</div>
+<!-- Hero Header & High-Impact Summary Metric Pills -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-card-pad-lg">
+<div class="space-y-micro-gap">
+<div class="flex items-center gap-metric-gap">
+<span class="font-caption-caps text-caption-caps text-primary tracking-widest uppercase">Municipal Central Command</span>
+<span class="font-telemetry-code text-telemetry-code text-on-surface-variant">NODE::0x4E9A</span>
+</div>
+<h1 class="font-display-hero text-display-hero font-bold tracking-tight text-on-surface flex items-center gap-metric-gap">
+        City Hall
+        <span class="material-symbols-outlined text-primary text-[36px]">account_balance</span>
+</h1>
+<p class="font-body-lg text-body-lg text-secondary">
+        Everything in motion across your city right now
+      </p>
+</div>
+<!-- Live Telemetry Status Pill -->
+<div class="flex items-center gap-dock-gap p-card-pad-sm rounded-xl bg-surface-container-lowest">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">sensors</span>
+</div>
+<div>
+<div class="font-caption-caps text-caption-caps text-on-surface-variant uppercase">Stream Status</div>
+<div class="font-telemetry-sm text-telemetry-sm text-primary flex items-center gap-micro-gap">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          REALTIME SYNCHRONIZED
+        </div>
+</div>
+</div>
+</div>
+<!-- High-Impact Telemetry Metrics Bento Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-dock-gap">
+<!-- Metric 1 -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex flex-col justify-between space-y-card-pad-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption-caps text-caption-caps text-on-surface-variant tracking-wider uppercase">Total Civic Actions</span>
+<div class="w-7 h-7 rounded bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">41</div>
+<div class="font-telemetry-sm text-telemetry-sm text-primary flex items-center gap-micro-gap mt-micro-gap">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span class="">Active items across 5 core systems</span>
+</div>
+</div>
+<!-- Progress visual micro-bar -->
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 78%;"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex flex-col justify-between space-y-card-pad-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption-caps text-caption-caps text-on-surface-variant tracking-wider uppercase">Open Pull Requests</span>
+<div class="w-7 h-7 rounded bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[16px]">merge_type</span>
+</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">14 PRs</div>
+<div class="font-telemetry-sm text-telemetry-sm text-on-surface-variant flex items-center gap-micro-gap mt-micro-gap">
+<span class="text-primary font-semibold">8</span> review-ready • <span class="text-secondary font-semibold">6</span> drafting/in-review
+        </div>
+</div>
+<div class="flex gap-micro-gap w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 57%;"></div>
+<div class="h-full bg-surface-variant" style="width: 43%;"></div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex flex-col justify-between space-y-card-pad-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption-caps text-caption-caps text-on-surface-variant tracking-wider uppercase">Open Issues</span>
+<div class="w-7 h-7 rounded bg-surface-container-high flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[16px]">bug_report</span>
+</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">27 Issues</div>
+<div class="font-telemetry-sm text-telemetry-sm text-on-surface-variant flex items-center gap-micro-gap mt-micro-gap">
+<span class="text-error font-semibold">12</span> bugs • <span class="text-primary font-semibold">9</span> feats • <span class="text-secondary">6</span> triage
+        </div>
+</div>
+<div class="flex gap-micro-gap w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 44%;"></div>
+<div class="h-full bg-primary" style="width: 33%;"></div>
+<div class="h-full bg-secondary-container" style="width: 23%;"></div>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all flex flex-col justify-between space-y-card-pad-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption-caps text-caption-caps text-on-surface-variant tracking-wider uppercase">Active Architects</span>
+<div class="w-7 h-7 rounded bg-surface-container-high flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+</div>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight">32 Online</div>
+<div class="font-telemetry-sm text-telemetry-sm text-tertiary-container flex items-center gap-micro-gap mt-micro-gap">
+<span class="material-symbols-outlined text-[14px]">hub</span>
+<span class="">Deploying across 8 urban districts</span>
+</div>
+</div>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 85%;"></div>
+</div>
+</div>
+</div>
+<!-- Filter & Controls Municipal Toolbar -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low flex flex-col gap-dock-gap">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-dock-gap">
+<!-- Search Input -->
+<div class="relative flex-1">
+<div class="absolute inset-y-0 left-0 pl-card-pad-sm flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</div>
+<input class="w-full h-10 pl-10 pr-12 bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/50 font-body-md text-body-md rounded-lg focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary transition-all" id="civic-search-input" placeholder="Filter across repos, authors, labels... (Press /)" type="text">
+<div class="absolute inset-y-0 right-0 pr-card-pad-sm flex items-center">
+<kbd class="px-micro-gap py-0.5 rounded bg-surface-container-high font-caption-caps text-caption-caps text-on-surface-variant">/</kbd>
+</div>
+</div>
+<!-- Dropdown Filter Controls -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-micro-gap">
+<!-- Repository Filter -->
+<div class="relative">
+<select class="appearance-none h-10 pl-card-pad-sm pr-8 bg-surface-container-lowest hover:bg-surface-container text-on-surface font-telemetry-sm text-telemetry-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer transition-colors">
+<option value="all">Repo: All Districts</option>
+<option value="git-city-core">git-city-core</option>
+<option value="neural-engine">neural-engine</option>
+<option value="frontend-ui">frontend-ui</option>
+<option value="octree-spatial">octree-spatial</option>
+<option value="city-telemetry">city-telemetry</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-card-pad-sm flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+</div>
+<!-- Age Filter -->
+<div class="relative">
+<select class="appearance-none h-10 pl-card-pad-sm pr-8 bg-surface-container-lowest hover:bg-surface-container text-on-surface font-telemetry-sm text-telemetry-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer transition-colors">
+<option value="recent">Age: Recently Updated</option>
+<option value="newest">Newest First</option>
+<option value="oldest">Oldest First</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-card-pad-sm flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+</div>
+<!-- Status Filter -->
+<div class="relative">
+<select class="appearance-none h-10 pl-card-pad-sm pr-8 bg-surface-container-lowest hover:bg-surface-container text-on-surface font-telemetry-sm text-telemetry-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer transition-colors">
+<option value="all">Status: All Statuses</option>
+<option value="review">Needs Review</option>
+<option value="approved">Approved</option>
+<option value="bugs">Bugs Only</option>
+<option value="features">Features</option>
+</select>
+<div class="absolute inset-y-0 right-0 pr-card-pad-sm flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Toggle Filter Chips -->
+<div class="flex flex-wrap items-center gap-metric-gap pt-micro-gap">
+<span class="font-caption-caps text-caption-caps text-on-surface-variant uppercase tracking-wider">CIVIC PRESETS:</span>
+<button class="inline-flex items-center gap-micro-gap px-card-pad-sm py-micro-gap rounded-md bg-surface-container hover:bg-surface-container-high text-primary font-telemetry-sm text-telemetry-sm transition-all">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+        Needs My Review
+        <span class="px-1.5 py-0.2 rounded bg-surface-container-lowest text-primary text-[10px] font-bold">3</span>
+</button>
+<button class="inline-flex items-center gap-micro-gap px-card-pad-sm py-micro-gap rounded-md bg-surface-container hover:bg-surface-container-high text-error font-telemetry-sm text-telemetry-sm transition-all">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+        High Priority
+        <span class="px-1.5 py-0.2 rounded bg-surface-container-lowest text-error text-[10px] font-bold">5</span>
+</button>
+<button class="inline-flex items-center gap-micro-gap px-card-pad-sm py-micro-gap rounded-md bg-surface-container hover:bg-surface-container-high text-secondary font-telemetry-sm text-telemetry-sm transition-all">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+        Flagship Repos
+        <span class="px-1.5 py-0.2 rounded bg-surface-container-lowest text-secondary text-[10px] font-bold">18</span>
+</button>
+<button class="inline-flex items-center gap-micro-gap px-card-pad-sm py-micro-gap rounded-md bg-transparent hover:bg-surface-container-high text-on-surface-variant font-telemetry-sm text-telemetry-sm transition-all ml-auto">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+        Clear All Filters
+      </button>
+</div>
+</div>
+<!-- Two-Column Layout: PRs vs Issues -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-card-pad-lg">
+<!-- Column 1: Pull Requests in Progress -->
+<div class="space-y-card-pad-md">
+<!-- Column Header -->
+<div class="flex items-center justify-between p-card-pad-sm rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-metric-gap">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">call_merge</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Pull Requests in Progress</h2>
+<div class="font-telemetry-sm text-telemetry-sm text-on-surface-variant flex items-center gap-micro-gap">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+</span>
+<span class="">14 open PRs • Sector Velocity High</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-micro-gap">
+<span class="font-caption-caps text-caption-caps text-on-surface-variant hidden sm:inline">SORT:</span>
+<span class="px-card-pad-sm py-micro-gap rounded bg-surface-container-lowest text-secondary font-telemetry-sm text-telemetry-sm">Recently Updated</span>
+</div>
+</div>
+<!-- PR Cards Stack -->
+<div class="space-y-dock-gap">
+<!-- PR 1 -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group space-y-dock-gap">
+<div class="flex items-center justify-between gap-micro-gap">
+<div class="flex items-center gap-metric-gap min-w-0">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(111,253,238,0.6)]"></span>
+<span class="font-telemetry-code text-telemetry-code text-primary font-medium tracking-wide">git-city-core</span>
+<span class="text-on-surface-variant font-telemetry-code text-telemetry-code hidden sm:inline">#1042</span>
+</div>
+<span class="px-card-pad-sm py-0.5 rounded-full bg-surface-container-high text-primary font-telemetry-sm text-telemetry-sm font-semibold flex items-center gap-micro-gap">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Needs Review
+            </span>
+</div>
+<div>
+<a class="font-headline-sm text-headline-sm font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-2" href="#">
+              feat: WebGL shader atmospheric fog bloom &amp; volumetric lighting
+            </a>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-metric-gap pt-micro-gap text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-metric-gap min-w-0">
+<div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary text-[11px] font-bold">AC</div>
+<span class="text-on-surface">Alex Chen</span>
+<span class="text-on-surface-variant">(@alex-chen)</span>
+<span class="">•</span>
+<span class="">opened 3 hours ago</span>
+</div>
+<div class="flex items-center gap-dock-gap ml-auto">
+<span class="font-telemetry-code text-telemetry-code text-primary font-semibold">+420</span>
+<span class="font-telemetry-code text-telemetry-code text-error font-semibold">-38</span>
+<span class="flex items-center gap-micro-gap text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+                4
+              </span>
+</div>
+</div>
+</div>
+<!-- PR 2 -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group space-y-dock-gap">
+<div class="flex items-center justify-between gap-micro-gap">
+<div class="flex items-center gap-metric-gap min-w-0">
+<span class="w-2 h-2 rounded-full bg-tertiary-container shadow-[0_0_8px_rgba(112,216,255,0.6)]"></span>
+<span class="font-telemetry-code text-telemetry-code text-tertiary-container font-medium tracking-wide">neural-engine</span>
+<span class="text-on-surface-variant font-telemetry-code text-telemetry-code hidden sm:inline">#891</span>
+</div>
+<span class="px-card-pad-sm py-0.5 rounded-full bg-surface-container-high text-primary-container font-telemetry-sm text-telemetry-sm font-semibold flex items-center gap-micro-gap">
+<span class="material-symbols-outlined text-[12px] text-primary-container">check_circle</span>
+              Approved
+            </span>
+</div>
+<div>
+<a class="font-headline-sm text-headline-sm font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-2" href="#">
+              refactor: optimize octree spatial queries for Monorepos &amp; high density districts
+            </a>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-metric-gap pt-micro-gap text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-metric-gap min-w-0">
+<div class="w-6 h-6 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary font-bold text-[11px]">SL</div>
+<span class="text-on-surface">Sarah Lin</span>
+<span class="text-on-surface-variant">(@sarah-dev)</span>
+<span class="">•</span>
+<span class="">opened 1 day ago</span>
+</div>
+<div class="flex items-center gap-dock-gap ml-auto">
+<!-- Reviewer Avatar Stack -->
+<div class="flex -space-x-1.5 items-center">
+<div class="w-5 h-5 rounded-full bg-surface-container-highest flex items-center justify-center text-[10px] text-primary" title="Reviewer 1">EK</div>
+<div class="w-5 h-5 rounded-full bg-secondary-container flex items-center justify-center text-[10px] text-on-surface" title="Reviewer 2">JD</div>
+</div>
+<span class="font-telemetry-code text-telemetry-code text-primary font-semibold">+189</span>
+<span class="font-telemetry-code text-telemetry-code text-error font-semibold">-112</span>
+</div>
+</div>
+</div>
+<!-- PR 3 -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group space-y-dock-gap">
+<div class="flex items-center justify-between gap-micro-gap">
+<div class="flex items-center gap-metric-gap min-w-0">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_rgba(189,199,223,0.5)]"></span>
+<span class="font-telemetry-code text-telemetry-code text-secondary font-medium tracking-wide">frontend-ui</span>
+<span class="text-on-surface-variant font-telemetry-code text-telemetry-code hidden sm:inline">#512</span>
+</div>
+<span class="px-card-pad-sm py-0.5 rounded-full bg-surface-container-high text-secondary-fixed-dim font-telemetry-sm text-telemetry-sm font-semibold flex items-center gap-micro-gap">
+<span class="material-symbols-outlined text-[12px] text-secondary-fixed-dim">pending_actions</span>
+              Changes Requested
+            </span>
+</div>
+<div>
+<a class="font-headline-sm text-headline-sm font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-2" href="#">
+              perf: virtualize citizen avatar nodes in large population clusters
+            </a>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-metric-gap pt-micro-gap text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-metric-gap min-w-0">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container text-[11px] font-bold">KM</div>
+<span class="text-on-surface">Kenji Matsuda</span>
+<span class="text-on-surface-variant">(@k-matsuda)</span>
+<span class="">•</span>
+<span class="">opened 2 days ago</span>
+</div>
+<div class="flex items-center gap-dock-gap ml-auto">
+<span class="font-telemetry-code text-telemetry-code text-primary font-semibold">+74</span>
+<span class="font-telemetry-code text-telemetry-code text-error font-semibold">-15</span>
+<span class="flex items-center gap-micro-gap text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+                7
+              </span>
+</div>
+</div>
+</div>
+<!-- PR 4 -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group space-y-dock-gap">
+<div class="flex items-center justify-between gap-micro-gap">
+<div class="flex items-center gap-metric-gap min-w-0">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(111,253,238,0.6)]"></span>
+<span class="font-telemetry-code text-telemetry-code text-primary font-medium tracking-wide">git-city-core</span>
+<span class="text-on-surface-variant font-telemetry-code text-telemetry-code hidden sm:inline">#1028</span>
+</div>
+<span class="px-card-pad-sm py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-telemetry-sm text-telemetry-sm font-semibold flex items-center gap-micro-gap">
+<span class="material-symbols-outlined text-[12px]">edit_document</span>
+              Draft
+            </span>
+</div>
+<div>
+<a class="font-headline-sm text-headline-sm font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-2" href="#">
+              draft: add Unreal Engine 5 export format &amp; glTF scene package
+            </a>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-metric-gap pt-micro-gap text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-metric-gap min-w-0">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-primary text-[11px] font-bold">EV</div>
+<span class="text-on-surface">Elias Vance</span>
+<span class="text-on-surface-variant">(@elias-z)</span>
+<span class="">•</span>
+<span class="">opened 4 days ago</span>
+</div>
+<div class="flex items-center gap-dock-gap ml-auto">
+<span class="font-telemetry-code text-telemetry-code text-primary font-semibold">+980</span>
+<span class="font-telemetry-code text-telemetry-code text-error font-semibold">-45</span>
+<span class="flex items-center gap-micro-gap text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+                11
+              </span>
+</div>
+</div>
+</div>
+<!-- PR 5 -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group space-y-dock-gap">
+<div class="flex items-center justify-between gap-micro-gap">
+<div class="flex items-center gap-metric-gap min-w-0">
+<span class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_rgba(199,237,255,0.6)]"></span>
+<span class="font-telemetry-code text-telemetry-code text-tertiary font-medium tracking-wide">city-telemetry</span>
+<span class="text-on-surface-variant font-telemetry-code text-telemetry-code hidden sm:inline">#319</span>
+</div>
+<span class="px-card-pad-sm py-0.5 rounded-full bg-surface-container-high text-primary-container font-telemetry-sm text-telemetry-sm font-semibold flex items-center gap-micro-gap">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+              In Review
+            </span>
+</div>
+<div>
+<a class="font-headline-sm text-headline-sm font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-2" href="#">
+              fix: webhook synchronization latency with GitHub GraphQL v4 API
+            </a>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-metric-gap pt-micro-gap text-on-surface-variant font-telemetry-sm text-telemetry-sm">
+<div class="flex items-center gap-metric-gap min-w-0">
+<div class="w-6 h-6 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary font-bold text-[11px]">ML</div>
+<span class="text-on-surface">Maya Lin</span>
+<span class="text-on-surface-variant">(@m-lin)</span>
+<span class="">•</span>
+<span class="">opened 5 days ago</span>
+</div>
+<div class="flex items-center gap-dock-gap ml-auto">
+<span class="font-telemetry-code text-telemetry-code text-primary font-semibold">+31</span>
+<span class="font-telemetry-code text-telemetry-code text-error font-semibold">-8</span>
+<span class="flex items-center gap-micro-gap text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">chat_bubble</span>
+                2
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: Open Issues -->
+<div class="space-y-card-pad-md">
+<!-- Column Header -->
+<div class="flex items-center justify-between p-card-pad-sm rounded-xl bg-surface-container-low">
+<div class="flex items-center gap-metric-gap">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[18px]">verified</span></div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Open Issues</h2>
+<div class="font-telemetry-sm text-telemetry-sm text-on-surface-variant flex items-center gap-micro-gap"><span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span></span><span class="text-primary font-semibold">0 open issues</span><span class="text-on-surface-variant">• Sector in equilibrium</span></div>
+</div>
+</div>
+<button class="inline-flex items-center gap-micro-gap px-card-pad-sm py-micro-gap rounded bg-surface-container hover:bg-surface-container-high text-primary font-telemetry-sm text-telemetry-sm transition-colors">
+<span class="material-symbols-outlined text-[14px]">auto_fix_high</span>
+<span class="">Quick Triage</span>
+</button>
+</div>
+<!-- Issues Cards Stack -->
+<div class="p-card-pad-lg rounded-xl bg-surface-container-low border border-outline-variant/30 flex flex-col items-center justify-center text-center space-y-card-pad-md py-14 relative overflow-hidden"><div class="absolute inset-0 bg-primary/5 pointer-events-none rounded-xl"></div><div class="relative flex items-center justify-center"><div class="w-20 h-20 rounded-2xl bg-surface-container-high border border-primary/30 flex items-center justify-center text-primary shadow-[0_0_16px_rgba(76,224,210,0.35)]"><span class="material-symbols-outlined text-[40px] drop-shadow-[0_0_8px_rgba(111,253,238,0.6)]">task_alt</span></div><span class="absolute -bottom-1 -right-1 flex h-4 w-4"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span><span class="relative inline-flex rounded-full h-4 w-4 bg-primary-container border-2 border-surface-container-low"></span></span></div><div class="space-y-micro-gap max-w-md relative z-10"><div class="inline-flex items-center gap-micro-gap px-card-pad-sm py-micro-gap rounded-full bg-surface-container-high text-primary font-caption-caps text-caption-caps tracking-wider uppercase mb-micro-gap"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span><span class="">CIVIC SECTOR OPTIMAL</span></div><h3 class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">All Clear — Zero Open Issues</h3><p class="font-body-md text-body-md text-on-surface-variant">All civic tickets and bug anomalies in this sector have been resolved. The metropolis grid is running in peak condition.</p></div><div class="flex flex-wrap items-center justify-center gap-dock-gap pt-micro-gap relative z-10"><button class="inline-flex items-center gap-micro-gap px-card-pad-md py-micro-gap rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-telemetry-sm text-telemetry-sm transition-all shadow-[0_0_12px_rgba(76,224,210,0.12)]"><span class="material-symbols-outlined text-[16px]">history</span><span class="">View Closed Issues</span></button><button class="inline-flex items-center gap-micro-gap px-card-pad-md py-micro-gap rounded-lg bg-primary text-on-primary font-telemetry-sm text-telemetry-sm font-semibold hover:bg-primary-fixed transition-all"><span class="material-symbols-outlined text-[16px]">add</span><span class="">Create New Issue</span></button></div></div>
+</div>
+</div>
+<!-- Civic Health Status Bar & Pagination Footer -->
+<div class="p-card-pad-md rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-dock-gap">
+<div class="flex items-center gap-metric-gap">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+</span>
+<span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant">
+        Live GitHub Event Stream connected • <strong class="text-on-surface">Sector Core Grid</strong> • Last full poll 34s ago
+      </span>
+</div>
+<div class="flex items-center gap-dock-gap">
+<button class="inline-flex items-center gap-micro-gap px-card-pad-md py-micro-gap rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-telemetry-sm text-telemetry-sm transition-all" id="sync-trigger-btn">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="">Trigger Manual Sync</span>
+</button>
+<button class="inline-flex items-center gap-micro-gap px-card-pad-md py-micro-gap rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-telemetry-sm text-telemetry-sm transition-all">
+<span class="">Load More Civic Records</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Keyboard shortcut for filter input ('/')
+  document.addEventListener('keydown', function(e) {
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      const searchInput = document.getElementById('civic-search-input');
+      if (searchInput) {
+        searchInput.focus();
+      }
+    }
+  });
+
+  // Interactive micro-interaction on Sync Trigger
+  const syncBtn = document.getElementById('sync-trigger-btn');
+  if (syncBtn) {
+    syncBtn.addEventListener('click', function() {
+      const icon = this.querySelector('.material-symbols-outlined');
+      if (icon) {
+        icon.classList.add('animate-spin');
+        setTimeout(() => {
+          icon.classList.remove('animate-spin');
+        }, 1200);
+      }
+    });
+  }
+</script></main><footer class="w-full bg-surface-container-lowest py-gutter mt-card-pad-lg"><div class="w-full px-hud-edge-pad flex flex-col sm:flex-row items-center justify-between gap-dock-gap"><div class="flex items-center gap-dock-gap"><span class="font-telemetry-sm text-telemetry-sm text-on-surface-variant">© 2025 GIT CITY LABS // ORBITAL TELEMETRY</span><span class="hidden md:inline font-telemetry-sm text-telemetry-sm text-secondary-container">|</span><span class="hidden md:inline font-telemetry-sm text-telemetry-sm text-on-surface-variant">SYNCHRONIZING WITH GITHUB API ENGINE</span></div><div class="flex items-center gap-gutter"><a class="font-telemetry-sm text-telemetry-sm text-on-surface-variant hover:text-primary transition-colors" data-path="telemetry-docs" href="#">API PROTOCOL</a><a class="font-telemetry-sm text-telemetry-sm text-on-surface-variant hover:text-primary transition-colors" data-path="architecture" href="#">COORDINATES</a></div></div></footer>
+
+</body></html>

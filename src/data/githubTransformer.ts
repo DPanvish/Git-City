@@ -6,6 +6,7 @@ const CITY_QUERY = `
   query GetViewerCity {
     viewer {
       login
+      avatarUrl
       createdAt
       followers {
         totalCount
@@ -61,7 +62,19 @@ export async function fetchLiveCityData(accessToken: string): Promise<CitySchema
   // Group repositories into districts by Primary Language
   const districtsMap = new Map<string, Building[]>();
 
-  viewer.repositories.nodes.forEach((repo: any) => {
+  interface RepoNode {
+    id: string;
+    name: string;
+    url: string;
+    stargazerCount: number;
+    diskUsage: number;
+    pushedAt: string;
+    primaryLanguage: { name: string } | null;
+    issues: { totalCount: number };
+    pullRequests: { totalCount: number };
+  }
+
+  viewer.repositories.nodes.forEach((repo: RepoNode) => {
     // Normalize language to match our design system keys
     const lang = repo.primaryLanguage?.name?.toLowerCase() || 'unknown';
     
@@ -89,6 +102,7 @@ export async function fetchLiveCityData(accessToken: string): Promise<CitySchema
       openPRs: repo.pullRequests.totalCount + repo.issues.totalCount,
       lastCommitDaysAgo,
       url: repo.url,
+      stars: repo.stargazerCount,
     };
 
     if (!districtsMap.has(lang)) {
@@ -105,6 +119,7 @@ export async function fetchLiveCityData(accessToken: string): Promise<CitySchema
   return {
     user: {
       login: viewer.login,
+      avatarUrl: viewer.avatarUrl,
       followers: viewer.followers.totalCount,
       accountAgeYears,
     },
