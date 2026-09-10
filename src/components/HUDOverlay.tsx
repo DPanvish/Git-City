@@ -8,9 +8,10 @@ interface HUDOverlayProps {
   cityData: CitySchema;
   onResetCamera?: () => void;
   onToggleDayNight?: () => void;
+  onOpenCitizens?: () => void;
 }
 
-export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight }: HUDOverlayProps) {
+export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCitizens }: HUDOverlayProps) {
   const allBuildings = cityData.districts.flatMap(d => d.buildings);
   const totalRepos = allBuildings.length;
   const totalStars = allBuildings.reduce((acc, b) => acc + b.stars, 0);
@@ -106,7 +107,11 @@ export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight }: HUDOve
                 <span className="text-[10px] font-mono text-amber-400/80">★</span>
               </div>
             </div>
-            <div className="bg-slate-900/70 border border-white/5 rounded-xl p-3 flex flex-col justify-between hover:bg-slate-900/90 transition-colors">
+            <div 
+              onClick={onOpenCitizens}
+              className="bg-slate-900/70 border border-white/5 rounded-xl p-3 flex flex-col justify-between hover:bg-slate-900/90 hover:border-brand-cyan/30 transition-all cursor-pointer"
+              title="View Citizens"
+            >
               <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400">Followers</span>
               <div className="flex items-baseline gap-1 mt-1.5">
                 <span className="text-2xl font-mono font-bold text-purple-300 tracking-tight">{totalFollowers.toLocaleString()}</span>
