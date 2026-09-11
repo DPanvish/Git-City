@@ -2,7 +2,8 @@
 
 import { useRef, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { CameraControls, ContactShadows } from '@react-three/drei';
+import { CameraControls, ContactShadows, Grid, Stars } from '@react-three/drei';
+import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import { InstancedBuildings } from './InstancedBuildings';
 import { CitySchema, Building } from '@/data/types';
 import * as THREE from 'three';
@@ -93,14 +94,30 @@ export function CityScene({ cityData, selectedRepo, onBuildingClick }: CityScene
         {/* The procedurally generated city */}
         <InstancedBuildings districts={cityData.districts} onBuildingClick={handleBuildingClick} />
 
-        {/* Ground plane */}
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
-          <planeGeometry args={[200, 200]} />
-          <meshStandardMaterial color="#0a0a1a" roughness={1} />
-        </mesh>
+        {/* Cinematic Particles */}
+        <Stars radius={50} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />
+
+        {/* Glowing Cyberpunk Grid Floor */}
+        <Grid 
+          position={[0, -0.01, 0]} 
+          args={[200, 200]} 
+          cellSize={1} 
+          cellThickness={0.5} 
+          cellColor="#06b6d4" 
+          sectionSize={5} 
+          sectionThickness={1} 
+          sectionColor="#3b82f6" 
+          fadeDistance={50} 
+          fadeStrength={1} 
+        />
         
         {/* Add subtle contact shadows for depth */}
         <ContactShadows resolution={1024} scale={100} blur={2} opacity={0.5} far={10} color="#000000" />
+
+        {/* Post Processing for Neon Bloom */}
+        <EffectComposer>
+          <Bloom luminanceThreshold={0.2} mipmapBlur intensity={1.5} />
+        </EffectComposer>
       </Canvas>
     </div>
   );
