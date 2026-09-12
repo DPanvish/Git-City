@@ -65,17 +65,20 @@ export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCi
         </div>
         
         {/* Right: Action Buttons */}
-        <div className="flex items-center gap-2">
-          <button onClick={onStartTour} className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-brand-cyan/10 hover:bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/30 text-xs font-medium transition-all active:scale-95 shadow-sm">
-            <Play className="w-3.5 h-3.5 fill-brand-cyan stroke-brand-cyan" />
-            <span className="hidden sm:inline">Guided Tour</span>
+        <div className="flex items-center gap-3">
+          <button onClick={onStartTour} className="relative overflow-hidden group flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#080e1a]/80 text-[#4ce0d2] border border-[#4ce0d2]/40 hover:border-[#4ce0d2] text-[11px] font-bold uppercase tracking-wider transition-all duration-300 active:scale-95 shadow-[0_0_10px_rgba(76,224,210,0.15)] hover:shadow-[0_0_20px_rgba(76,224,210,0.5)]">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#4ce0d2]/20 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out"></div>
+            <Play className="w-3.5 h-3.5 fill-[#4ce0d2] stroke-[#4ce0d2] group-hover:scale-110 transition-transform" />
+            <span className="hidden sm:inline relative z-10">Guided Tour</span>
           </button>
-          <button onClick={onOpenExport} className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 border border-white/10 text-xs font-medium transition-all active:scale-95 hover:border-slate-500">
-            <Share2 className="w-3.5 h-3.5 text-slate-300" />
-            <span className="hidden sm:inline">Share</span>
+          
+          <button onClick={onOpenExport} className="relative overflow-hidden group flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#161c28]/80 hover:bg-[#1a202c] text-slate-300 hover:text-white border border-white/10 hover:border-white/30 text-[11px] font-bold uppercase tracking-wider transition-all duration-300 active:scale-95">
+            <Share2 className="w-3.5 h-3.5 group-hover:text-[#4ce0d2] transition-colors" />
+            <span className="hidden sm:inline relative z-10">Share</span>
           </button>
-          <Link href="/settings" className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 border border-white/10 transition-all active:scale-95 hover:text-white" title="Settings">
-            <Settings className="w-4 h-4" />
+          
+          <Link href="/settings" className="relative overflow-hidden group flex items-center justify-center w-[34px] h-[34px] rounded-xl bg-[#161c28]/80 hover:bg-[#1a202c] text-slate-300 hover:text-[#4ce0d2] border border-white/10 hover:border-[#4ce0d2]/50 transition-all duration-300 active:scale-95 hover:shadow-[0_0_15px_rgba(76,224,210,0.2)]" title="Settings">
+            <Settings className="w-4 h-4 group-hover:rotate-90 transition-transform duration-500" />
           </Link>
         </div>
       </header>
@@ -112,10 +115,11 @@ export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCi
             </div>
             <div 
               onClick={onOpenCitizens}
-              className="bg-slate-900/70 border border-white/5 rounded-xl p-3 flex flex-col justify-between hover:bg-slate-900/90 hover:border-brand-cyan/30 transition-all cursor-pointer"
+              className="bg-[#0a0f18]/80 border border-white/5 rounded-xl p-3 flex flex-col justify-between hover:bg-[#111827] hover:border-[#4ce0d2]/50 transition-all cursor-pointer group shadow-[0_4px_12px_rgba(0,0,0,0.5)] hover:shadow-[0_0_20px_rgba(76,224,210,0.15)] relative overflow-hidden"
               title="View Citizens"
             >
-              <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400">Followers</span>
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#4ce0d2]/0 via-[#4ce0d2]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400 group-hover:text-[#4ce0d2] transition-colors">Followers</span>
               <div className="flex items-baseline gap-1 mt-1.5">
                 <span className="text-2xl font-mono font-bold text-purple-300 tracking-tight">{totalFollowers.toLocaleString()}</span>
                 <span className="text-[10px] font-mono text-purple-400/80">pop</span>
@@ -198,32 +202,12 @@ export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCi
       </div>
 
       {/* ------------------------------------------------------------- */}
-      {/* BOTTOM CONTROLS: CENTER FLOATING PILL-SHAPED BAR              */}
+      {/* BOTTOM RIGHT CONTROLS                                         */}
       {/* ------------------------------------------------------------- */}
-      <div className="w-full flex items-center justify-center pb-2 pointer-events-none">
-        <div className="pointer-events-auto flex items-center gap-2 p-1.5 pl-3 pr-2 backdrop-blur-2xl border border-white/15 rounded-full shadow-hud hover:border-brand-cyan/40 transition-all max-w-xl w-full sm:w-auto bg-slate-900/60">
-          
-          <div className="relative flex items-center flex-1 sm:w-72">
-            <Search className="w-4 h-4 text-slate-400 absolute left-2.5" />
-            <input className="w-full bg-slate-900/80 border border-white/5 focus:border-brand-cyan/50 focus:outline-none text-xs text-white placeholder-slate-400 pl-8 pr-12 py-2 rounded-full font-mono transition-all" placeholder="Find a repo…" type="text" />
-            <kbd className="absolute right-2.5 px-1.5 py-0.5 rounded bg-slate-800 text-[10px] font-mono text-slate-400 border border-slate-700">⌘K</kbd>
-          </div>
-          
-          <div className="h-6 w-px bg-white/10 mx-1"></div>
-          
-          <button onClick={onResetCamera} className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 hover:text-white border border-white/5 text-xs font-medium transition-all active:scale-95 group" title="Reset Camera / Orbit View">
-            <Orbit className="w-4 h-4 text-brand-cyan group-hover:rotate-45 transition-transform" />
-            <span className="hidden md:inline text-xs font-mono">Reset Cam</span>
-          </button>
-          
-          <button onClick={onToggleDayNight} className="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-amber-300 hover:text-amber-200 border border-white/5 transition-all active:scale-95" title="Toggle Day / Night Sky">
-            <Moon className="w-4 h-4" />
-          </button>
-          
-          <button className="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-slate-300 hover:text-white border border-white/5 transition-all active:scale-95" title="Freecam View">
-            <Expand className="w-4 h-4" />
-          </button>
-        </div>
+      <div className="absolute bottom-6 right-6 pointer-events-none flex flex-col gap-3">
+        <button onClick={onResetCamera} className="pointer-events-auto relative overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-[#050810]/80 hover:bg-[#161c28] text-slate-400 hover:text-[#4ce0d2] border border-white/10 hover:border-[#4ce0d2]/50 shadow-lg hover:shadow-[0_0_15px_rgba(76,224,210,0.3)] transition-all duration-300 active:scale-95 group" title="Reset Camera">
+          <Orbit className="w-5 h-5 group-hover:rotate-45 transition-transform duration-500" />
+        </button>
       </div>
     </div>
   );

@@ -54,96 +54,61 @@ export function RepoInspector({ repo, onClose }: RepoInspectorProps) {
 
             <div className="flex-1 overflow-y-auto px-5 py-4 space-y-5 pb-32">
               {/* Stats Grid */}
-              <div className="grid grid-cols-4 gap-2">
-                <div className="bg-slate-900/80 border border-white/5 rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
-                  <div className="flex items-center gap-1 text-[10px] font-mono text-amber-400/90 mb-1">
-                    <Star className="w-3 h-3 fill-amber-400/80 text-amber-400" />
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-slate-900/80 border border-white/5 rounded-xl p-3 flex flex-col items-start justify-center text-left hover:border-amber-400/30 transition-colors group">
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-amber-400/90 mb-1">
+                    <Star className="w-3.5 h-3.5 fill-amber-400/80 text-amber-400 group-hover:scale-110 transition-transform" />
                     <span>Stars</span>
                   </div>
-                  <span className="text-sm font-bold font-mono text-white">{repo.stars.toLocaleString()}</span>
-                </div>
-                <div className="bg-slate-900/80 border border-white/5 rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
-                  <div className="flex items-center gap-1 text-[10px] font-mono text-emerald-400 mb-1">
-                    <GitFork className="w-3 h-3 text-emerald-400" />
-                    <span>Forks</span>
+                  <span className="text-xl font-bold font-mono text-white mb-2">{repo.stars.toLocaleString()}</span>
+                  <div className="w-full px-2 py-1 rounded bg-amber-500/10 border border-amber-500/20 text-[9px] font-mono text-amber-400/90 tracking-tight">
+                    [↑ Determines Tower Height]
                   </div>
-                  <span className="text-sm font-bold font-mono text-white">{Math.floor(repo.stars * 0.15)}</span>
                 </div>
-                <div className="bg-slate-900/80 border border-white/5 rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
-                  <div className="flex items-center gap-1 text-[10px] font-mono text-purple-400 mb-1">
-                    <CircleDot className="w-3 h-3 text-purple-400" />
-                    <span>Issues</span>
+                
+                <div className="bg-slate-900/80 border border-white/5 rounded-xl p-3 flex flex-col items-start justify-center text-left hover:border-brand-cyan/30 transition-colors group">
+                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-brand-cyan mb-1">
+                    <GitPullRequest className="w-3.5 h-3.5 text-brand-cyan group-hover:scale-110 transition-transform" />
+                    <span>Open PRs</span>
                   </div>
-                  <span className="text-sm font-bold font-mono text-white">14</span>
-                </div>
-                <div className="bg-slate-900/80 border border-white/5 rounded-xl p-2.5 flex flex-col items-center justify-center text-center">
-                  <div className="flex items-center gap-1 text-[10px] font-mono text-brand-cyan mb-1">
-                    <GitPullRequest className="w-3 h-3 text-brand-cyan" />
-                    <span>PRs</span>
+                  <span className="text-xl font-bold font-mono text-white mb-2">{repo.openPRs}</span>
+                  <div className="w-full px-2 py-1 rounded bg-brand-cyan/10 border border-brand-cyan/20 text-[9px] font-mono text-brand-cyan/90 tracking-tight">
+                    [🗼 Determines Roof Spire Height]
                   </div>
-                  <span className="text-sm font-bold font-mono text-white">{repo.openPRs}</span>
                 </div>
               </div>
 
-              {/* Activity Graph */}
-              <div className="bg-slate-900/60 border border-white/5 rounded-xl p-3.5">
-                <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                    <Activity className="w-3.5 h-3.5 text-brand-cyan" /> Activity
-                  </span>
-                  <span className="text-[10px] font-mono text-brand-cyan/80">Last commit: {repo.lastCommitDaysAgo === 0 ? 'Today' : `${repo.lastCommitDaysAgo} days ago`}</span>
+              {/* Glow Battery (Commit Activity) */}
+              <div className="bg-slate-900/60 border border-white/5 rounded-xl p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2 text-[11px] font-mono font-bold uppercase tracking-wider text-slate-300">
+                    <Activity className="w-4 h-4 text-brand-cyan" /> Recency & Glow
+                  </div>
+                  <div className="px-2 py-1 rounded bg-brand-cyan/10 border border-brand-cyan/20 text-[9px] font-mono text-brand-cyan/90 tracking-tight">
+                    [💡 Determines Neon Glow Intensity]
+                  </div>
                 </div>
-                <div className="relative flex items-end justify-between gap-1.5 h-32 pt-10 px-1">
-                  {[35, 50, 65, 40, 75, 45, 90, 100, 80, 55, 85, 65].map((h, i) => (
-                    <div key={i} className="w-full flex flex-col items-center gap-1 h-full justify-end relative">
-                      {i === 7 && (
-                        <div className="absolute -top-9 left-1/2 -translate-x-1/2 z-20 pointer-events-none flex flex-col items-center whitespace-nowrap">
-                          <div className="px-2.5 py-1 rounded-lg bg-[#0d131f]/95 border border-brand-cyan/50 backdrop-blur-md shadow-hud shadow-neon text-[10px] font-mono flex items-center gap-1.5 text-slate-200">
-                            <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse"></span>
-                            <span className="text-white font-semibold">Peak:</span>
-                            <span className="text-brand-cyan font-bold">38 commits</span>
-                          </div>
-                          <div className="w-2 h-1 border-t-4 border-t-brand-cyan/60 border-x-4 border-x-transparent"></div>
-                        </div>
-                      )}
-                      <div className={`w-full hover:bg-brand-cyan rounded-t transition-all ${i === 7 ? 'bg-brand-cyan shadow-neon ring-2 ring-brand-cyan/60' : 'bg-brand-cyan/40'}`} style={{ height: `${h}%` }}></div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex items-center justify-between pt-2 mt-1 border-t border-white/5 text-[10px] font-mono text-slate-400">
-                  <span>3 months ago</span>
-                  <span className="text-brand-cyan font-medium">+38 commits this month</span>
-                  <span>Now</span>
-                </div>
-              </div>
-
-              {/* Pull Requests */}
-              <div className="border-t border-white/5 pt-3.5">
-                <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                    <GitPullRequest className="w-3.5 h-3.5 text-brand-cyan" /> Open Pull Requests
-                  </span>
-                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-brand-cyan/10 text-brand-cyan border border-brand-cyan/20">{repo.openPRs} active</span>
-                </div>
-                <div className="space-y-2">
-                  <div className="p-2.5 rounded-xl bg-slate-900/70 border border-white/5 hover:border-brand-cyan/30 transition-all">
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex items-center gap-2">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img alt="alex-chen" className="w-5 h-5 rounded-full object-cover ring-1 ring-white/20" src="https://i.pravatar.cc/100?img=11" />
-                        <span className="text-[11px] font-mono text-slate-400">@alex-chen</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">Open</span>
-                        <span className="text-[10px] font-mono text-slate-500">3h ago</span>
-                      </div>
-                    </div>
-                    <p className="text-xs font-medium text-slate-200 mt-1.5 leading-snug hover:text-brand-cyan cursor-pointer transition-colors">feat: WebGL shader atmospheric fog bloom</p>
-                    <div className="flex items-center gap-2 mt-1 text-[10px] font-mono text-slate-400">
-                      <span className="text-brand-cyan">#284</span>
-                      <span>•</span>
-                      <span>+420 / -38</span>
-                    </div>
+                
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-end justify-between">
+                    <span className="text-2xl font-bold font-mono text-white">
+                      {repo.lastCommitDaysAgo === 0 ? 'Today' : `${repo.lastCommitDaysAgo}`}
+                      {repo.lastCommitDaysAgo !== 0 && <span className="text-xs font-sans font-normal text-slate-400 ml-1">days ago</span>}
+                    </span>
+                    <span className="text-[10px] font-mono text-slate-400 uppercase">Last Commit</span>
+                  </div>
+                  
+                  {/* Battery Bar */}
+                  <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden p-0.5 border border-white/5 relative">
+                    {/* The intensity drops as days go up. Max intensity at 0 days, zero at ~100 days */}
+                    <div 
+                      className="h-full rounded-full bg-gradient-to-r from-[#4ce0d2] to-[#70d8ff] shadow-neon transition-all duration-1000"
+                      style={{ width: `${Math.max(5, 100 - Math.min(100, repo.lastCommitDaysAgo))}%` }}
+                    />
+                  </div>
+                  <div className="flex items-center justify-between text-[9px] font-mono text-slate-500 pt-1">
+                    <span>Intense Glow</span>
+                    <span>Dimmed</span>
                   </div>
                 </div>
               </div>
@@ -156,15 +121,13 @@ export function RepoInspector({ repo, onClose }: RepoInspectorProps) {
                   </span>
                   <span className="text-[10px] font-mono text-slate-400">{repo.contributors} architects</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <div className="flex -space-x-2 overflow-hidden py-1">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img key={i} alt={`architect ${i}`} className="inline-block h-8 w-8 rounded-full ring-2 ring-[#0d131f] object-cover" src={`https://i.pravatar.cc/100?img=${i + 20}`} />
-                    ))}
+                <div className="flex items-center gap-3 bg-slate-900/30 border border-white/5 rounded-xl p-3">
+                  <div className="w-10 h-10 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-neon">
+                    <Users className="w-5 h-5" />
                   </div>
-                  <div className="px-2.5 py-1.5 rounded-full bg-slate-800/90 border border-white/10 text-[11px] font-mono text-slate-300 hover:text-white cursor-pointer transition-colors">
-                    +{Math.max(0, repo.contributors - 5)} more
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold font-mono text-white">{repo.contributors}</span>
+                    <span className="text-[10px] font-mono text-slate-500">Registered Contributors</span>
                   </div>
                 </div>
               </div>
