@@ -202,31 +202,12 @@ export function HUDOverlay({ cityData, onResetCamera, onToggleDayNight, onOpenCi
       </div>
 
       {/* ------------------------------------------------------------- */}
-      {/* BOTTOM CONTROLS: CENTER FLOATING PILL-SHAPED BAR              */}
+      {/* BOTTOM RIGHT CONTROLS                                         */}
       {/* ------------------------------------------------------------- */}
-      <div className="w-full flex items-center justify-center pb-6 pointer-events-none">
-        <div className="pointer-events-auto flex items-center gap-2 p-1.5 pl-3 pr-2 backdrop-blur-3xl border border-white/10 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:border-[#4ce0d2]/30 transition-all max-w-xl w-full sm:w-auto bg-[#050810]/80 group/dock">
-          
-          <div className="relative flex items-center flex-1 sm:w-72">
-            <Search className="w-4 h-4 text-slate-500 absolute left-3 group-focus-within/dock:text-[#4ce0d2] transition-colors" />
-            <input className="w-full bg-transparent border border-transparent focus:border-white/5 focus:bg-white/5 focus:outline-none text-xs text-white placeholder-slate-500 pl-9 pr-12 py-2.5 rounded-full font-mono transition-all" placeholder="Find a repo…" type="text" />
-            <kbd className="absolute right-3 px-1.5 py-0.5 rounded bg-[#161c28] text-[10px] font-mono text-slate-400 border border-[#2f3542]">⌘K</kbd>
-          </div>
-          
-          <div className="h-6 w-px bg-white/10 mx-1"></div>
-          
-          <button onClick={onResetCamera} className="relative overflow-hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-[#4ce0d2]/10 text-slate-300 hover:text-[#4ce0d2] border border-transparent hover:border-[#4ce0d2]/30 transition-all active:scale-95 group/btn" title="Reset Camera / Orbit View">
-            <Orbit className="w-4 h-4 group-hover/btn:rotate-45 transition-transform duration-500" />
-          </button>
-          
-          <button onClick={onToggleDayNight} className="relative overflow-hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-amber-400/10 text-slate-300 hover:text-amber-300 border border-transparent hover:border-amber-400/30 transition-all active:scale-95 group/btn" title="Toggle Day / Night Sky">
-            <Moon className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" />
-          </button>
-          
-          <button className="relative overflow-hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-transparent hover:border-white/20 transition-all active:scale-95 group/btn" title="Freecam View">
-            <Expand className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-          </button>
-        </div>
+      <div className="absolute bottom-6 right-6 pointer-events-none flex flex-col gap-3">
+        <button onClick={onResetCamera} className="pointer-events-auto relative overflow-hidden flex items-center justify-center w-12 h-12 rounded-full bg-[#050810]/80 hover:bg-[#161c28] text-slate-400 hover:text-[#4ce0d2] border border-white/10 hover:border-[#4ce0d2]/50 shadow-lg hover:shadow-[0_0_15px_rgba(76,224,210,0.3)] transition-all duration-300 active:scale-95 group" title="Reset Camera">
+          <Orbit className="w-5 h-5 group-hover:rotate-45 transition-transform duration-500" />
+        </button>
       </div>
     </div>
   );

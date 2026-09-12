@@ -28,22 +28,10 @@ export default function LandingPage() {
               <span className="font-caption-caps text-caption-caps text-on-surface-variant">STATUS: GRID ONLINE // V1.0</span>
             </div>
           </div>
-          <nav className="hidden lg:flex items-center gap-gutter">
-            <Link href="#" className="transition-colors bg-primary-container text-on-primary-container font-bold rounded-lg px-3 py-1">Overview</Link>
-            <Link href="#" className="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-3 py-1">Districts</Link>
-            <Link href="#" className="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-3 py-1">Architecture</Link>
-            <Link href="#" className="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors px-3 py-1">Telemetry Docs</Link>
-          </nav>
-          <div className="flex items-center gap-dock-gap">
-            <Link href="#" className="hidden sm:inline-flex items-center gap-micro-gap px-card-pad-md py-micro-gap rounded-lg bg-surface-container-low text-primary-container font-telemetry-sm text-telemetry-sm hover:bg-surface-container-high hover:text-on-surface transition-all shadow-[0_0_12px_rgba(76,224,210,0.12)]">
-              <span className="material-symbols-outlined text-[16px]">explore</span>Explore Demo
-            </Link>
+          <div className="flex items-center gap-dock-gap ml-auto">
             <button onClick={() => signIn("github")} className="inline-flex items-center gap-micro-gap px-card-pad-md py-micro-gap rounded-lg bg-primary text-on-primary font-headline-sm text-headline-sm font-semibold hover:bg-primary-fixed transition-all shadow-[0_0_16px_rgba(76,224,210,0.35)]">
               <span className="material-symbols-outlined text-[18px]">terminal</span>Sign in with GitHub
             </button>
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-              <span className="material-symbols-outlined text-on-primary text-[18px]">person</span>
-            </div>
           </div>
         </div>
       </header>
@@ -166,10 +154,6 @@ export default function LandingPage() {
                     </svg>
                     <span>Sign in with GitHub</span>
                   </button>
-                  <Link href="#" className="inline-flex items-center gap-micro-gap px-card-pad-md py-dock-gap rounded-lg bg-surface-container-high text-primary-container font-telemetry-sm text-telemetry-sm hover:bg-surface-variant hover:text-on-surface transition-all shadow-[0_0_12px_rgba(0,0,0,0.3)]">
-                    <span className="material-symbols-outlined text-[16px]">play_circle</span>
-                    <span>Launch Live Holo-Grid</span>
-                  </Link>
                 </div>
               </div>
               

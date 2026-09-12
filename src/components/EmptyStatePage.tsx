@@ -28,12 +28,8 @@ export default function EmptyStatePage({ user }: EmptyStatePageProps) {
 
   const handleRefresh = () => {
     setIsRefreshing(true);
-    setTimeout(() => {
-      setIsRefreshing(false);
-      const now = new Date();
-      const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-      setLastScanTime(`${timeString} (No new repositories detected)`);
-    }, 900);
+    // Actually reload the page to fetch new GitHub data
+    window.location.reload();
   };
 
   return (
@@ -63,18 +59,7 @@ export default function EmptyStatePage({ user }: EmptyStatePageProps) {
             </div>
           </div>
           
-          <nav className="hidden lg:flex items-center gap-6">
-            <Link href="/" className="px-3 py-1 bg-[#4ce0d2]/10 text-[#4ce0d2] font-semibold rounded-lg text-sm border border-[#4ce0d2]/20">Overview</Link>
-            <Link href="/" className="text-sm text-slate-400 hover:text-slate-200 transition-colors">Districts</Link>
-            <Link href="/" className="text-sm text-slate-400 hover:text-slate-200 transition-colors">Architecture</Link>
-            <Link href="/" className="text-sm text-slate-400 hover:text-slate-200 transition-colors">Telemetry Docs</Link>
-          </nav>
-          
-          <div className="flex items-center gap-3">
-            <Link href="/" className="hidden sm:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#161c28] text-[#4ce0d2] text-xs font-mono hover:bg-[#242a37] hover:text-white transition-all shadow-[0_0_12px_rgba(76,224,210,0.12)] border border-[#2f3542]">
-              <Compass className="w-4 h-4" />
-              Explore Demo
-            </Link>
+          <div className="flex items-center gap-3 ml-auto">
             <button onClick={() => signIn("github")} className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-[#6ffdee]/10 text-[#6ffdee] text-sm font-semibold hover:bg-[#6ffdee]/20 transition-all border border-[#6ffdee]/30 shadow-[0_0_16px_rgba(76,224,210,0.2)]">
               <Terminal className="w-4 h-4" />
               Sign in with GitHub
